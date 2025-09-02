@@ -1,0 +1,2574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍻 Bières 0%</title>
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --border: #dee2e6;
+            --hover: #f1f3f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            font-size: 0.85em;
+        }
+        
+        /* Sugar column header text visibility */
+        .mobile-text {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .desktop-text {
+                display: none;
+            }
+            
+            .mobile-text {
+                display: inline;
+            }
+            
+            .table-container {
+                font-size: 0.75em;
+                margin: 1rem 0;
+            }
+            
+            table {
+                width: 100%;
+                table-layout: fixed;
+            }
+            
+            th, td {
+                padding: 0.3rem 0.4rem;
+                word-wrap: break-word;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            
+            th:first-child, td:first-child {
+                width: 15%;
+            }
+            
+            th:nth-child(2), td:nth-child(2) {
+                width: 45%;
+            }
+            
+            /* Sugar column - fit content on mobile */
+            th:nth-child(3), td:nth-child(3) {
+                width: auto;
+                min-width: 60px;
+                text-align: center;
+                white-space: nowrap;
+            }
+            
+            th:last-child {
+                width: 15%;
+                min-width: 80px;
+                max-width: 100px;
+                font-size: 0.75em;
+                white-space: normal;
+                word-break: break-word;
+                line-height: 1.2;
+                padding: 0.3rem 0.2rem;
+            }
+            
+            td:last-child {
+                width: 15%;
+                min-width: 80px;
+                max-width: 100px;
+                font-family: monospace;
+                font-size: 0.8em;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        
+        th, td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.4;
+        }
+        
+        th {
+            background-color: #f8f9fa;
+            position: sticky;
+            top: 0;
+            cursor: pointer;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding: 0.6rem 0.8rem;
+            font-weight: 500;
+            font-size: 0.9em;
+        }
+        
+        /* Add a wrapper for header content */
+        th > span {
+            display: inline-block;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            vertical-align: middle;
+        }
+        
+        /* Style for EAN column */
+        th:last-child > span {
+            max-width: 100%;
+            text-align: center;
+            display: block;
+            width: 100%;
+        }
+        
+        /* Center EAN column content */
+        td:last-child {
+            text-align: center;
+            padding: 0.6rem 0.2rem;
+        }
+        
+        /* Center the barcode button */
+        .barcode-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            padding: 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        /* Sort arrow styling */
+        th::after {
+            content: '';
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1rem;
+            height: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9em;
+            opacity: 0.3;
+            transition: opacity 0.2s;
+        }
+        
+        th:hover::after {
+            opacity: 0.7;
+        }
+        
+        th.sort-asc::after,
+        th.sort-desc::after {
+            opacity: 1;
+        }
+        
+        th.sort-asc::after {
+            content: '↑';
+        }
+        
+        th.sort-desc::after {
+            content: '↓';
+        }
+        
+        tr:hover {
+            background-color: var(--hover);
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            th, td {
+                padding: 0.3rem 0.4rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+    <style>
+        /* Barcode Modal */
+        .barcode-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .barcode-modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 90%;
+            max-height: 90%;
+            overflow: auto;
+        }
+        
+        .barcode-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+        
+        .barcode-btn:hover {
+            color: #0066cc;
+        }
+        
+        #barcode-canvas {
+            max-width: 100%;
+            height: auto;
+            margin: 1rem 0;
+        }
+        
+        .close-btn {
+            background: #f44336;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        
+        .close-btn:hover {
+            background: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    
+    
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍻 Bières 0%</title>
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --border: #dee2e6;
+            --hover: #f1f3f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            font-size: 0.85em;
+        }
+        
+        /* Sugar column header text visibility */
+        .mobile-text {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .desktop-text {
+                display: none;
+            }
+            
+            .mobile-text {
+                display: inline;
+            }
+            
+            .table-container {
+                font-size: 0.75em;
+                margin: 1rem 0;
+            }
+            
+            table {
+                width: 100%;
+                table-layout: fixed;
+            }
+            
+            th, td {
+                padding: 0.3rem 0.4rem;
+                word-wrap: break-word;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            
+            th:first-child, td:first-child {
+                width: 15%;
+            }
+            
+            th:nth-child(2), td:nth-child(2) {
+                width: 45%;
+            }
+            
+            /* Sugar column - fit content on mobile */
+            th:nth-child(3), td:nth-child(3) {
+                width: auto;
+                min-width: 60px;
+                text-align: center;
+                white-space: nowrap;
+            }
+            
+            th:last-child {
+                width: 15%;
+                min-width: 80px;
+                max-width: 100px;
+                font-size: 0.75em;
+                white-space: normal;
+                word-break: break-word;
+                line-height: 1.2;
+                padding: 0.3rem 0.2rem;
+            }
+            
+            td:last-child {
+                width: 15%;
+                min-width: 80px;
+                max-width: 100px;
+                font-family: monospace;
+                font-size: 0.8em;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        
+        th, td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.4;
+        }
+        
+        th {
+            background-color: #f8f9fa;
+            position: sticky;
+            top: 0;
+            cursor: pointer;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding: 0.6rem 0.8rem;
+            font-weight: 500;
+            font-size: 0.9em;
+        }
+        
+        /* Add a wrapper for header content */
+        th > span {
+            display: inline-block;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            vertical-align: middle;
+        }
+        
+        /* Style for EAN column */
+        th:last-child > span {
+            max-width: 100%;
+            text-align: center;
+            display: block;
+            width: 100%;
+        }
+        
+        /* Center EAN column content */
+        td:last-child {
+            text-align: center;
+            padding: 0.6rem 0.2rem;
+        }
+        
+        /* Center the barcode button */
+        .barcode-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            padding: 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        /* Sort arrow styling */
+        th::after {
+            content: '';
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1rem;
+            height: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9em;
+            opacity: 0.3;
+            transition: opacity 0.2s;
+        }
+        
+        th:hover::after {
+            opacity: 0.7;
+        }
+        
+        th.sort-asc::after,
+        th.sort-desc::after {
+            opacity: 1;
+        }
+        
+        th.sort-asc::after {
+            content: '↑';
+        }
+        
+        th.sort-desc::after {
+            content: '↓';
+        }
+        
+        tr:hover {
+            background-color: var(--hover);
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            th, td {
+                padding: 0.3rem 0.4rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+    <style>
+        /* Barcode Modal */
+        .barcode-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .barcode-modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 90%;
+            max-height: 90%;
+            overflow: auto;
+        }
+        
+        .barcode-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+        
+        .barcode-btn:hover {
+            color: #0066cc;
+        }
+        
+        #barcode-canvas {
+            max-width: 100%;
+            height: auto;
+            margin: 1rem 0;
+        }
+        
+        .close-btn {
+            background: #f44336;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        
+        .close-btn:hover {
+            background: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    
+<main>
+    <style>
+        .title-container {
+            text-align: center;
+            margin: 2rem 0 3rem;
+            padding: 2rem 0;
+            background: rgba(248, 249, 250, 0.5);
+            border-radius: 8px;
+        }
+        
+        .beer-title {
+            font-size: 3rem;
+            color: #d4a017;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .beer-emoji {
+            font-size: 2.5rem;
+            animation: bounce 2s infinite;
+        }
+        
+        .tagline {
+            color: #6c757d;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .beer-title {
+                font-size: 2rem;
+                gap: 0.6rem;
+            }
+            
+            .beer-emoji {
+                font-size: 1.8rem;
+            }
+            
+            .tagline {
+                font-size: 1rem;
+                margin-top: 0.3rem;
+            }
+            
+            .title-container {
+                margin: 1.2rem 0 1.8rem;
+                padding: 1.2rem 0;
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+    
+    <div class="title-container">
+        <h1 class="beer-title">
+            <span class="beer-emoji">🍺</span>
+            <span class="title-text">Bières 0%</span>
+            <span class="beer-emoji">🍻</span>
+        </h1>
+        <p class="tagline">Quelle teneur en sucres ?</p>
+    </div>
+    <div class="table-container">
+        <table id="data-table">
+            <thead>
+                <tr>
+                    <th data-sort="nom"><span>Marque</span></th>
+                    <th data-sort="position"><span>Produit</span></th>
+                    <th data-sort="sucre" data-sort-type="number">
+                        <span class="desktop-text">Sucre (100,0 g|ml)</span>
+                        <span class="mobile-text">Sucres</span>
+                    </th>
+                    <th><span>EAN</span></th>
+                </tr>
+            </thead>
+            <tbody id="beer-table-body">
+                
+                <tr class="beer-row">
+                    <td>1664</td>
+                    <td>Bière blonde sans alcool 0,0% bouteilles</td>
+                    <td data-value="0">
+                        
+                            0g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216055442" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>GUINNESS</td>
+                    <td>Bière brune sans alcool 0.0% boîte</td>
+                    <td data-value="0.4">
+                        
+                            0.4g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="5000213024829" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>HEINEKEN</td>
+                    <td>Bière blonde sans alcool 0,0% bouteilles</td>
+                    <td data-value="1.3">
+                        
+                            1.3g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="8712000050368" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>HEINEKEN</td>
+                    <td>Bière blonde sans alcool 0.0% boîtes</td>
+                    <td data-value="1.3">
+                        
+                            1.3g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="8712000050702" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>HEINEKEN</td>
+                    <td>Bière blonde sans alcool 0.0% bouteilles</td>
+                    <td data-value="1.3">
+                        
+                            1.3g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="8712000052492" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>SAN MIGUEL</td>
+                    <td>Bière blonde sans alcool 0.0% bouteilles</td>
+                    <td data-value="1.7">
+                        
+                            1.7g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="8410655006173" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>AFFLIGEM</td>
+                    <td>Bière sans alcool 0,0% bouteille</td>
+                    <td data-value="1.8">
+                        
+                            1.8g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3119780273775" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>AFFLIGEM</td>
+                    <td>Bière blonde belge d&#39;abbaye sans alcool 0.0% bouteilles</td>
+                    <td data-value="1.8">
+                        
+                            1.8g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3119780272747" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>KRONENBOURG</td>
+                    <td>Bière blonde pur malt sans alcool bouteilles</td>
+                    <td data-value="2.9">
+                        
+                            2.9g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216054964" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>KRONENBOURG</td>
+                    <td>Bière blonde sans alcool 0,4% bouteilles</td>
+                    <td data-value="2.9">
+                        
+                            2.9g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216054933" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>GRIMBERGEN</td>
+                    <td>Bière blonde sans alcool 0.0% bouteilles</td>
+                    <td data-value="3.2">
+                        
+                            3.2g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216056043" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>GRIMBERGEN</td>
+                    <td>Bière blonde sans alcool 0.0% bouteilles</td>
+                    <td data-value="3.2">
+                        
+                            3.2g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216057811" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>TOURTEL TWIST</td>
+                    <td>Bière sans alcool 0.0% aromatisée pêche blanche et thé vert</td>
+                    <td data-value="3.5">
+                        
+                            3.5g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216059891" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>AFFLIGEM</td>
+                    <td>Bière blanche sans alcool 0.0% bouteilles</td>
+                    <td data-value="3.7">
+                        
+                            3.7g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3119789828969" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>1664</td>
+                    <td>Blanc Bière blanche sans alcool 0.0% bouteilles</td>
+                    <td data-value="3.8">
+                        
+                            3.8g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216058603" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>TOURTEL TWIST</td>
+                    <td>Bière sans alcool framboise et hibiscus -30% de sucres</td>
+                    <td data-value="3.9">
+                        
+                            3.9g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216060071" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>SCHWEPPES</td>
+                    <td>Boisson ginger beer non alcoolisé</td>
+                    <td data-value="4.3">
+                        
+                            4.3g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3124480193698" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>SCHWEPPES</td>
+                    <td>Boisson gazeuse ginger beer non alcoolisé boîte</td>
+                    <td data-value="4.3">
+                        
+                            4.3g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3124480200280" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>TOURTEL TWIST</td>
+                    <td>Bière sans alcool 0.0% aromatisée au jus de nectarine et citron vert</td>
+                    <td data-value="4.5">
+                        
+                            4.5g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216058528" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>TOURTEL</td>
+                    <td>Bière Twist sans alcool au jus de citron bouteilles</td>
+                    <td data-value="4.7">
+                        
+                            4.7g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216055275" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>TOURTEL TWIST</td>
+                    <td>Bière sans alcool 0.0% aromatisée au jus de citron</td>
+                    <td data-value="4.7">
+                        
+                            4.7g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216058405" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>TOURTEL TWIST</td>
+                    <td>Bière sans alcool 0.0% aromatisée au jus de mangue passion</td>
+                    <td data-value="4.7">
+                        
+                            4.7g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216052403" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>TOURTEL TWIST</td>
+                    <td>Bière sans alcool 0.0% aromatisée au jus de citron</td>
+                    <td data-value="4.7">
+                        
+                            4.7g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216055336" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>TOURTEL TWIST</td>
+                    <td>Bière sans alcool 0.0% aromatisée au jus de pêche</td>
+                    <td data-value="4.7">
+                        
+                            4.7g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216049267" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>TOURTEL TWIST</td>
+                    <td>Bière sans alcool 0.0% aromatisée à la pêche</td>
+                    <td data-value="4.7">
+                        
+                            4.7g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216049250" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>TOURTEL TWIST</td>
+                    <td>Bière sans alcool 0.0% aromatisée au jus de citron boîtes</td>
+                    <td data-value="4.7">
+                        
+                            4.7g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216058412" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>DESPERADOS</td>
+                    <td>Bière blonde agrumes citron Virgin sans alcool 0,0% bouteilles</td>
+                    <td data-value="4.8">
+                        
+                            4.8g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3119780273904" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>DESPERADOS</td>
+                    <td>Bière blonde agrumes citron Virgin sans alcool 0,0% bouteilles</td>
+                    <td data-value="4.8">
+                        
+                            4.8g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3119789827498" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>TOURTEL TWIST</td>
+                    <td>Bière sans alcool 0.0% aromatisée aux agrumes</td>
+                    <td data-value="4.8">
+                        
+                            4.8g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216055398" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>TOURTEL TWIST</td>
+                    <td>Bière sans alcool 0.0% aromatisée aux jus de fraise citron vert et notes de menthe</td>
+                    <td data-value="4.8">
+                        
+                            4.8g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216061627" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>TOURTEL TWIST</td>
+                    <td>Bière sans alcool 0.0% aromatisée au jus d&#39;ananas</td>
+                    <td data-value="4.8">
+                        
+                            4.8g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216054766" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>TOURTEL TWIST</td>
+                    <td>Bière Twist sans alcool 0.0% aromatisée jus de pastèque notes de melon bouteilles</td>
+                    <td data-value="4.8">
+                        
+                            4.8g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216059815" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>TOURTEL TWIST</td>
+                    <td>Bière sans alcool 0.0% aromatisée au jus d&#39;abricot</td>
+                    <td data-value="4.8">
+                        
+                            4.8g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216063676" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>TOURTEL</td>
+                    <td>Bière Twist sans alcool 0.0% aromatisée framboise boîtes</td>
+                    <td data-value="4.9">
+                        
+                            4.9g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216058467" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>TOURTEL TWIST</td>
+                    <td>Bière sans alcool 0.0% aromatisée au jus de framboise</td>
+                    <td data-value="4.9">
+                        
+                            4.9g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216055367" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>TOURTEL TWIST</td>
+                    <td>Bière sans alcool 0.0% au jus de fraise et notes de rhubarbe</td>
+                    <td data-value="4.9">
+                        
+                            4.9g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216056296" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>TOURTEL TWIST</td>
+                    <td>Bière sans alcool 0.0% à la framboise bouteilles</td>
+                    <td data-value="4.9">
+                        
+                            4.9g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216055305" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>TOURTEL TWIST</td>
+                    <td>Bière sans alcool 0.0% aromatisée jus de citron</td>
+                    <td data-value="5">
+                        
+                            5g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216060361" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>TOURTEL TWIST</td>
+                    <td>Bière sans alcool 0,0% aromatisée à la cerise griotte bouteilles</td>
+                    <td data-value="5.1">
+                        
+                            5.1g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216050232" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>TOURTEL TWIST</td>
+                    <td>Bière sans alcool 0.0% au jus de mûre et notes de myrtille</td>
+                    <td data-value="5.1">
+                        
+                            5.1g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216054803" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>TOURTEL TWIST</td>
+                    <td>Bière sans alcool 0.0% aromatisée citron- citron vert bio bouteilles</td>
+                    <td data-value="5.1">
+                        
+                            5.1g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216056975" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>TOURTEL TWIST</td>
+                    <td>Bière sans alcool 0.0% aromatisée au jus de citron vert</td>
+                    <td data-value="5.3">
+                        
+                            5.3g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216050768" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>DESPERADOS</td>
+                    <td>Bière Red aromatisée framboise &amp; zestes de citron vert fresh berry virgin 0.0% bouteilles</td>
+                    <td data-value="6">
+                        
+                            6g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3119789828938" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>DESPERADOS</td>
+                    <td>Bière blonde arome Virgin punch 0%</td>
+                    <td data-value="6.2">
+                        
+                            6.2g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3119789831662" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>STERLING</td>
+                    <td>Panaché 0,5% bouteilles</td>
+                    <td data-value="6.3">
+                        
+                            6.3g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3596710450930" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>STERLING</td>
+                    <td>Panaché 1% bouteilles</td>
+                    <td data-value="6.3">
+                        
+                            6.3g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3254560094734" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>FORCE 4</td>
+                    <td>Panaché 0,4% bouteilles</td>
+                    <td data-value="6.5">
+                        
+                            6.5g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216053264" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>DESPERADOS</td>
+                    <td>Bière blonde arôme Virgin mojito sans alcool 0,0% bouteilles</td>
+                    <td data-value="6.7">
+                        
+                            6.7g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3119780273911" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>LICORNE</td>
+                    <td>Panaché 1% bouteilles</td>
+                    <td data-value="7.1">
+                        
+                            7.1g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3244850006622" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>STERLING</td>
+                    <td>Panaché aromatisé grenadine moins de 0,5% d&#39;alcool bouteilles</td>
+                    <td data-value="7.1">
+                        
+                            7.1g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3596710481026" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>BUNDABERG</td>
+                    <td>Ginger Beer sans alcool</td>
+                    <td data-value="10.8">
+                        
+                            10.8g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="9311493002220" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>SCHWEPPES</td>
+                    <td>Sélection boisson gazeuse ginger beer et chili</td>
+                    <td data-value="11.1">
+                        
+                            11.1g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="8435185973238" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>SCHWEPPES</td>
+                    <td>Boisson pour cocktail premium mixer ginger beer bouteilles</td>
+                    <td data-value="11.1">
+                        
+                            11.1g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3124480192103" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>BOTTOMS UP</td>
+                    <td>Bière de gingembre sans alcool 0% bio 1x33cl bouteille</td>
+                    <td data-value="11.7">
+                        
+                            11.7g
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="6430054832915" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>TOURTEL</td>
+                    <td>Tourtel twist Bière sans alcool framboise bouteilles 12x27,5cl</td>
+                    <td data-value="">
+                        
+                            N/A
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3080216051482" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>LA CHOUFFE</td>
+                    <td>Bière blonde belge sans alcool bouteilles</td>
+                    <td data-value="">
+                        
+                            N/A
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="5410769802138" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>LA PARISIENNE</td>
+                    <td>Bière blonde sans alcool 0,0% bio bouteille</td>
+                    <td data-value="">
+                        
+                            N/A
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3760039241283" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>LEFFE</td>
+                    <td>Bière blonde sans alcool 0.0% bouteilles</td>
+                    <td data-value="">
+                        
+                            N/A
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="5410228267447" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>CORONA</td>
+                    <td>Bière blonde sans alcool 0.0% bouteilles</td>
+                    <td data-value="">
+                        
+                            N/A
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="5410228292203" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>GOLDENBERG</td>
+                    <td>Panaché 0.4% bouteilles</td>
+                    <td data-value="">
+                        
+                            N/A
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3162330080590" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>LA GOUDALE</td>
+                    <td>Bière sans alcool au jus de citron 0.0% bouteilles</td>
+                    <td data-value="">
+                        
+                            N/A
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3261570008866" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>LA GOUDALE</td>
+                    <td>Bière blonde sans alcool 0.0% bouteilles</td>
+                    <td data-value="">
+                        
+                            N/A
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3261570007883" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>LEFFE</td>
+                    <td>Bière blonde sans alcool 0,0% bouteilles</td>
+                    <td data-value="">
+                        
+                            N/A
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="5410228267171" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>LEFFE</td>
+                    <td>Bière Ruby sans alcool 0.0% aromatisée fruits rouge bouteilles</td>
+                    <td data-value="">
+                        
+                            N/A
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="5410228281955" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>LICORNE</td>
+                    <td>Bière black sans alcool 0% bouteilles</td>
+                    <td data-value="">
+                        
+                            N/A
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3244850006059" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>LIEFMANS</td>
+                    <td>Bière aux fruits 0,0% bouteille</td>
+                    <td data-value="">
+                        
+                            N/A
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="5411686701597" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>MARTENS</td>
+                    <td>Panaché boîte</td>
+                    <td data-value="">
+                        
+                            N/A
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="5411616007669" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>MARTENS</td>
+                    <td>Bière sans alcool</td>
+                    <td data-value="">
+                        
+                            N/A
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="5411616001186" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>STERLING</td>
+                    <td>Bière aromatisée framboise 0% bouteilles</td>
+                    <td data-value="">
+                        
+                            N/A
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3596710533787" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>STERLING</td>
+                    <td>Bière aromatisée citron 0% bouteilles</td>
+                    <td data-value="">
+                        
+                            N/A
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3596710533794" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>STERLING</td>
+                    <td>Bière blonde sans alcool 0% bouteilles</td>
+                    <td data-value="">
+                        
+                            N/A
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="3596710512409" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+                <tr class="beer-row">
+                    <td>LE BALLON</td>
+                    <td>Ethylotest 0,5g/l de sang à la norme NF</td>
+                    <td data-value="">
+                        
+                            N/A
+                        
+                    </td>
+                    <td>
+                        
+                            <button class="barcode-btn" data-ean="2903202116100" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        
+                    </td>
+                </tr>
+                
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4" style="text-align: center; padding: 1rem;">
+                        <button id="load-more" style="padding: 0.5rem 2rem; cursor: pointer; margin: 1rem auto; display: block;">
+                            Voir plus
+                        </button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</main>
+
+    
+    
+    <script src="/js/table-manager.js"></script>
+    <!-- Barcode Modal -->
+    <div id="barcodeModal" class="barcode-modal">
+        <div class="barcode-modal-content">
+            <h3>Code-barres EAN-13</h3>
+            <div id="barcode-container">
+                <canvas id="barcode-canvas"></canvas>
+            </div>
+            <p id="barcode-number"></p>
+            <button class="close-btn">Fermer</button>
+        </div>
+    </div>
+    
+    <!-- JsBarcode Library -->
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    
+    <!-- Barcode Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('barcodeModal');
+            const closeBtn = document.querySelector('.close-btn');
+            const barcodeNumber = document.getElementById('barcode-number');
+            
+            // Handle barcode button clicks
+            document.querySelectorAll('.barcode-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const ean = this.getAttribute('data-ean');
+                    if (ean) {
+                        showBarcode(ean);
+                    }
+                });
+            });
+            
+            // Close modal when clicking the close button
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            // Close modal when clicking outside the content
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            function showBarcode(ean) {
+                try {
+                    // Format EAN to ensure it's 13 digits
+                    const formattedEan = ean.padStart(13, '0').substring(0, 13);
+                    
+                    // Clear previous barcode
+                    const canvas = document.getElementById('barcode-canvas');
+                    const ctx = canvas.getContext('2d');
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    
+                    // Generate new barcode
+                    JsBarcode("#barcode-canvas", formattedEan, {
+                        format: "EAN13",
+                        lineColor: "#000",
+                        width: 2,
+                        height: 80,
+                        displayValue: true,
+                        fontSize: 16,
+                        margin: 10
+                    });
+                    
+                    // Update barcode number display
+                    barcodeNumber.textContent = formattedEan;
+                    
+                    // Show modal
+                    modal.style.display = 'flex';
+                } catch (error) {
+                    console.error('Error generating barcode:', error);
+                    alert('Erreur lors de la génération du code-barres');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
+    <script src="/js/table-manager.js"></script>
+    <!-- Barcode Modal -->
+    <div id="barcodeModal" class="barcode-modal">
+        <div class="barcode-modal-content">
+            <h3>Code-barres EAN-13</h3>
+            <div id="barcode-container">
+                <canvas id="barcode-canvas"></canvas>
+            </div>
+            <p id="barcode-number"></p>
+            <button class="close-btn">Fermer</button>
+        </div>
+    </div>
+    
+    <!-- JsBarcode Library -->
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    
+    <!-- Barcode Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('barcodeModal');
+            const closeBtn = document.querySelector('.close-btn');
+            const barcodeNumber = document.getElementById('barcode-number');
+            
+            // Handle barcode button clicks
+            document.querySelectorAll('.barcode-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const ean = this.getAttribute('data-ean');
+                    if (ean) {
+                        showBarcode(ean);
+                    }
+                });
+            });
+            
+            // Close modal when clicking the close button
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            // Close modal when clicking outside the content
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            function showBarcode(ean) {
+                try {
+                    // Format EAN to ensure it's 13 digits
+                    const formattedEan = ean.padStart(13, '0').substring(0, 13);
+                    
+                    // Clear previous barcode
+                    const canvas = document.getElementById('barcode-canvas');
+                    const ctx = canvas.getContext('2d');
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    
+                    // Generate new barcode
+                    JsBarcode("#barcode-canvas", formattedEan, {
+                        format: "EAN13",
+                        lineColor: "#000",
+                        width: 2,
+                        height: 80,
+                        displayValue: true,
+                        fontSize: 16,
+                        margin: 10
+                    });
+                    
+                    // Update barcode number display
+                    barcodeNumber.textContent = formattedEan;
+                    
+                    // Show modal
+                    modal.style.display = 'flex';
+                } catch (error) {
+                    console.error('Error generating barcode:', error);
+                    alert('Erreur lors de la génération du code-barres');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

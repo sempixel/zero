@@ -1,0 +1,130 @@
+---
+layout: base.njk
+title: "🍻 Bières 0%"
+---
+
+{% extends "base.njk" %}
+
+{% block content %}
+<main>
+    <style>
+        .title-container {
+            text-align: center;
+            margin: 2rem 0 3rem;
+            padding: 2rem 0;
+            background: rgba(248, 249, 250, 0.5);
+            border-radius: 8px;
+        }
+        
+        .beer-title {
+            font-size: 3rem;
+            color: #d4a017;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .beer-emoji {
+            font-size: 2.5rem;
+            animation: bounce 2s infinite;
+        }
+        
+        .tagline {
+            color: #6c757d;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .beer-title {
+                font-size: 2rem;
+                gap: 0.6rem;
+            }
+            
+            .beer-emoji {
+                font-size: 1.8rem;
+            }
+            
+            .tagline {
+                font-size: 1rem;
+                margin-top: 0.3rem;
+            }
+            
+            .title-container {
+                margin: 1.2rem 0 1.8rem;
+                padding: 1.2rem 0;
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+    
+    <div class="title-container">
+        <h1 class="beer-title">
+            <span class="beer-emoji">🍺</span>
+            <span class="title-text">Bières 0%</span>
+            <span class="beer-emoji">🍻</span>
+        </h1>
+        <p class="tagline">Quelle teneur en sucres ?</p>
+    </div>
+    <div class="table-container">
+        <table id="data-table">
+            <thead>
+                <tr>
+                    <th data-sort="nom"><span>Marque</span></th>
+                    <th data-sort="position"><span>Produit</span></th>
+                    <th data-sort="sucre" data-sort-type="number">
+                        <span class="desktop-text">Sucre (100,0 g|ml)</span>
+                        <span class="mobile-text">Sucres</span>
+                    </th>
+                    <th><span>EAN</span></th>
+                </tr>
+            </thead>
+            <tbody id="beer-table-body">
+                {% for beer in beers %}
+                <tr class="beer-row">
+                    <td>{{ beer.brand }}</td>
+                    <td>{{ beer.description }}</td>
+                    <td data-value="{% if beer.nutritionalInfo.sucres !== null and beer.nutritionalInfo.sucres <= 50 %}{{ beer.nutritionalInfo.sucres }}{% endif %}">
+                        {% if beer.nutritionalInfo.sucres !== null and beer.nutritionalInfo.sucres <= 50 %}
+                            {{ beer.nutritionalInfo.sucres }}g
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if beer.ean %}
+                            <button class="barcode-btn" data-ean="{{ beer.ean }}" title="Afficher le code-barres">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 5v14"></path>
+                                    <path d="M8 5v14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <path d="M17 5v14"></path>
+                                    <path d="M21 5v14"></path>
+                                    <path d="M3 12h18"></path>
+                                </svg>
+                            </button>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4" style="text-align: center; padding: 1rem;">
+                        <button id="load-more" style="padding: 0.5rem 2rem; cursor: pointer; margin: 1rem auto; display: block;">
+                            Voir plus
+                        </button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</main>
+{% endblock %}

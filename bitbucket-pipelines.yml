@@ -1,0 +1,28 @@
+image: node:22
+
+pipelines:
+  branches:
+    main:
+      - step:
+          name: Build and Deploy
+          caches:
+            - node
+          script:
+            - npm ci
+            - npm run build
+          artifacts:
+            - _site/**
+      - step:
+          name: Deploy to Pages
+          deployment: production
+          script:
+            - pipe: atlassian/bitbucket-pages-publish:0.12.1
+              variables:
+                BITBUCKET_USERNAME: $BITBUCKET_USERNAME
+                BITBUCKET_APP_PASSWORD: $BITBUCKET_APP_PASSWORD
+                ACCESS_KEY: $ACCESS_KEY
+                SECRET_ACCESS_KEY: $SECRET_ACCESS_KEY
+                BUCKET: $BUCKET
+                ACL: public-read
+                BUILD_DIR: '_site/.'
+                DEBUG: 'true'
