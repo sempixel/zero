@@ -2,7 +2,7 @@ image: node:22
 
 pipelines:
   branches:
-    main:
+    master:
       - step:
           name: Build and Deploy
           caches:
