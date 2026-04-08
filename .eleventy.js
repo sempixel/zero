@@ -9,8 +9,14 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addFilter("frdate", function(isoString) {
     const d = new Date(isoString);
-    const pad = n => String(n).padStart(2, '0');
-    return `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()} à ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+    return d.toLocaleString('fr-FR', {
+      timeZone: 'Europe/Paris',
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
   });
   
   return {
