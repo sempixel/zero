@@ -126,5 +126,10 @@ title: "🍻 Bières 0%"
             </tfoot>
         </table>
     </div>
+    {% if meta.updatedAt %}
+    <footer style="text-align: center; padding: 2rem 0 0.5rem; color: #adb5bd; font-size: 0.75rem;">
+        Données mises à jour le {{ meta.updatedAt | frdate }}
+    </footer>
+    {% endif %}
 </main>
 {% endblock %}

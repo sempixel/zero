@@ -53,3 +53,8 @@ Thumbs.db
 # Editor files
 *.swp
 *.swo
+
+# Scraper debug artifacts
+logs/
+debug-*.png
+debug-page.html

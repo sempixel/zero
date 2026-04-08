@@ -6,6 +6,12 @@ module.exports = function(eleventyConfig) {
   // Watch for changes in these directories
   eleventyConfig.addWatchTarget("src/css/");
   eleventyConfig.addWatchTarget("src/js/");
+
+  eleventyConfig.addFilter("frdate", function(isoString) {
+    const d = new Date(isoString);
+    const pad = n => String(n).padStart(2, '0');
+    return `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()} à ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+  });
   
   return {
     dir: {
