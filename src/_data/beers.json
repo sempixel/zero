@@ -8,6 +8,14 @@
     }
   },
   {
+    "brand": "1664",
+    "description": "Bière blonde sans alcool boîte",
+    "ean": "3080216057361",
+    "nutritionalInfo": {
+      "sucres": 0
+    }
+  },
+  {
     "brand": "GUINNESS",
     "description": "Bière brune sans alcool 0.0% boîte",
     "ean": "5000213024829",
@@ -56,14 +64,6 @@
     }
   },
   {
-    "brand": "AFFLIGEM",
-    "description": "Bière blonde belge d'abbaye sans alcool 0.0% bouteilles",
-    "ean": "3119780272747",
-    "nutritionalInfo": {
-      "sucres": 1.8
-    }
-  },
-  {
     "brand": "KRONENBOURG",
     "description": "Bière blonde pur malt sans alcool bouteilles",
     "ean": "3080216054964",
@@ -73,7 +73,7 @@
   },
   {
     "brand": "KRONENBOURG",
-    "description": "Bière blonde sans alcool 0,4% bouteilles",
+    "description": "Bière blonde sans alcool bouteilles",
     "ean": "3080216054933",
     "nutritionalInfo": {
       "sucres": 2.9
@@ -96,19 +96,27 @@
     }
   },
   {
-    "brand": "TOURTEL TWIST",
-    "description": "Bière sans alcool 0.0% aromatisée pêche blanche et thé vert",
-    "ean": "3080216059891",
+    "brand": "AFFLIGEM",
+    "description": "Bière blonde belge d'abbaye sans alcool 0.0% bouteilles",
+    "ean": "3119780272747",
+    "nutritionalInfo": {
+      "sucres": 3.4
+    }
+  },
+  {
+    "brand": "MARTENS",
+    "description": "Bière non-alcoholisée 0,0%",
+    "ean": "5411616008871",
     "nutritionalInfo": {
       "sucres": 3.5
     }
   },
   {
-    "brand": "AFFLIGEM",
-    "description": "Bière blanche sans alcool 0.0% bouteilles",
-    "ean": "3119789828969",
+    "brand": "TOURTEL TWIST",
+    "description": "Bière sans alcool 0.0% aromatisée pêche blanche et thé vert",
+    "ean": "3080216059891",
     "nutritionalInfo": {
-      "sucres": 3.7
+      "sucres": 3.5
     }
   },
   {
@@ -129,16 +137,16 @@
   },
   {
     "brand": "SCHWEPPES",
-    "description": "Boisson ginger beer non alcoolisé",
-    "ean": "3124480193698",
+    "description": "Boisson gazeuse ginger beer boîtes",
+    "ean": "3124480200280",
     "nutritionalInfo": {
       "sucres": 4.3
     }
   },
   {
     "brand": "SCHWEPPES",
-    "description": "Boisson gazeuse ginger beer non alcoolisé boîte",
-    "ean": "3124480200280",
+    "description": "Boisson ginger beer",
+    "ean": "3124480193698",
     "nutritionalInfo": {
       "sucres": 4.3
     }
@@ -161,15 +169,15 @@
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Bière sans alcool 0.0% aromatisée au jus de citron",
-    "ean": "3080216058405",
+    "description": "Boisson aromatisé à base de bière et pêche 0.0%",
+    "ean": "3080216049250",
     "nutritionalInfo": {
       "sucres": 4.7
     }
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Bière sans alcool 0.0% aromatisée au jus de mangue passion",
+    "description": "Boisson aromatisée à base de bière et au jus de mangue passion 0%",
     "ean": "3080216052403",
     "nutritionalInfo": {
       "sucres": 4.7
@@ -178,6 +186,14 @@
   {
     "brand": "TOURTEL TWIST",
     "description": "Bière sans alcool 0.0% aromatisée au jus de citron",
+    "ean": "3080216058405",
+    "nutritionalInfo": {
+      "sucres": 4.7
+    }
+  },
+  {
+    "brand": "TOURTEL TWIST",
+    "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de citron",
     "ean": "3080216055336",
     "nutritionalInfo": {
       "sucres": 4.7
@@ -185,16 +201,8 @@
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Bière sans alcool 0.0% aromatisée au jus de pêche",
+    "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de pêche",
     "ean": "3080216049267",
-    "nutritionalInfo": {
-      "sucres": 4.7
-    }
-  },
-  {
-    "brand": "TOURTEL TWIST",
-    "description": "Bière sans alcool 0.0% aromatisée à la pêche",
-    "ean": "3080216049250",
     "nutritionalInfo": {
       "sucres": 4.7
     }
@@ -210,7 +218,7 @@
   {
     "brand": "DESPERADOS",
     "description": "Bière blonde agrumes citron Virgin sans alcool 0,0% bouteilles",
-    "ean": "3119780273904",
+    "ean": "3119789827498",
     "nutritionalInfo": {
       "sucres": 4.8
     }
@@ -218,14 +226,14 @@
   {
     "brand": "DESPERADOS",
     "description": "Bière blonde agrumes citron Virgin sans alcool 0,0% bouteilles",
-    "ean": "3119789827498",
+    "ean": "3119780273904",
     "nutritionalInfo": {
       "sucres": 4.8
     }
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Bière sans alcool 0.0% aromatisée aux agrumes",
+    "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus d'agrume",
     "ean": "3080216055398",
     "nutritionalInfo": {
       "sucres": 4.8
@@ -241,6 +249,14 @@
   },
   {
     "brand": "TOURTEL TWIST",
+    "description": "Bière sans alcool 0.0% aromatisée au jus d'abricot",
+    "ean": "3080216063676",
+    "nutritionalInfo": {
+      "sucres": 4.8
+    }
+  },
+  {
+    "brand": "TOURTEL TWIST",
     "description": "Bière sans alcool 0.0% aromatisée au jus d'ananas",
     "ean": "3080216054766",
     "nutritionalInfo": {
@@ -249,16 +265,8 @@
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Bière Twist sans alcool 0.0% aromatisée jus de pastèque notes de melon bouteilles",
+    "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de pastèque et notes de melon",
     "ean": "3080216059815",
-    "nutritionalInfo": {
-      "sucres": 4.8
-    }
-  },
-  {
-    "brand": "TOURTEL TWIST",
-    "description": "Bière sans alcool 0.0% aromatisée au jus d'abricot",
-    "ean": "3080216063676",
     "nutritionalInfo": {
       "sucres": 4.8
     }
@@ -273,15 +281,7 @@
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Bière sans alcool 0.0% aromatisée au jus de framboise",
-    "ean": "3080216055367",
-    "nutritionalInfo": {
-      "sucres": 4.9
-    }
-  },
-  {
-    "brand": "TOURTEL TWIST",
-    "description": "Bière sans alcool 0.0% au jus de fraise et notes de rhubarbe",
+    "description": "Boisson aromatisé à base de bière et au jus de fraise et notes de rhubarbe 0.0%",
     "ean": "3080216056296",
     "nutritionalInfo": {
       "sucres": 4.9
@@ -291,6 +291,14 @@
     "brand": "TOURTEL TWIST",
     "description": "Bière sans alcool 0.0% à la framboise bouteilles",
     "ean": "3080216055305",
+    "nutritionalInfo": {
+      "sucres": 4.9
+    }
+  },
+  {
+    "brand": "TOURTEL TWIST",
+    "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de framboise",
+    "ean": "3080216055367",
     "nutritionalInfo": {
       "sucres": 4.9
     }
@@ -313,7 +321,7 @@
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Bière sans alcool 0.0% au jus de mûre et notes de myrtille",
+    "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de mûre et notes de myrtille",
     "ean": "3080216054803",
     "nutritionalInfo": {
       "sucres": 5.1
@@ -353,23 +361,23 @@
   },
   {
     "brand": "STERLING",
-    "description": "Panaché 0,5% bouteilles",
-    "ean": "3596710450930",
-    "nutritionalInfo": {
-      "sucres": 6.3
-    }
-  },
-  {
-    "brand": "STERLING",
-    "description": "Panaché 1% bouteilles",
+    "description": "Panaché 1% pack bouteilles",
     "ean": "3254560094734",
     "nutritionalInfo": {
       "sucres": 6.3
     }
   },
   {
+    "brand": "STERLING",
+    "description": "Panaché 0,5% pack bouteilles",
+    "ean": "3596710450930",
+    "nutritionalInfo": {
+      "sucres": 6.3
+    }
+  },
+  {
     "brand": "FORCE 4",
-    "description": "Panaché 0,4% bouteilles",
+    "description": "Panaché 0,4% pack bouteilles",
     "ean": "3080216053264",
     "nutritionalInfo": {
       "sucres": 6.5
@@ -385,7 +393,7 @@
   },
   {
     "brand": "LICORNE",
-    "description": "Panaché 1% bouteilles",
+    "description": "Panaché 1% pack bouteilles",
     "ean": "3244850006622",
     "nutritionalInfo": {
       "sucres": 7.1
@@ -393,7 +401,7 @@
   },
   {
     "brand": "STERLING",
-    "description": "Panaché aromatisé grenadine moins de 0,5% d'alcool bouteilles",
+    "description": "Panaché aromatisé grenadine moins de 0,5% pack bouteilles",
     "ean": "3596710481026",
     "nutritionalInfo": {
       "sucres": 7.1
@@ -402,7 +410,7 @@
   {
     "brand": "BUNDABERG",
     "description": "Ginger Beer sans alcool",
-    "ean": "9311493002220",
+    "ean": "3505620897698",
     "nutritionalInfo": {
       "sucres": 10.8
     }
@@ -426,22 +434,14 @@
   {
     "brand": "BOTTOMS UP",
     "description": "Bière de gingembre sans alcool 0% bio 1x33cl bouteille",
-    "ean": "6430054832915",
+    "ean": "3505620691920",
     "nutritionalInfo": {
       "sucres": 11.7
     }
   },
   {
-    "brand": "TOURTEL",
-    "description": "Tourtel twist Bière sans alcool framboise bouteilles 12x27,5cl",
-    "ean": "3080216051482",
-    "nutritionalInfo": {
-      "sucres": 100
-    }
-  },
-  {
     "brand": "LA CHOUFFE",
-    "description": "Bière blonde belge sans alcool bouteilles",
+    "description": "Bière blonde belge sans alcool pack bouteilles",
     "ean": "5410769802138",
     "nutritionalInfo": {
       "sucres": null
@@ -456,9 +456,33 @@
     }
   },
   {
+    "brand": "LE BALLON",
+    "description": "Ethylotest 0,5g/l de sang à la norme NF",
+    "ean": "2903202116100",
+    "nutritionalInfo": {
+      "sucres": null
+    }
+  },
+  {
     "brand": "LEFFE",
     "description": "Bière blonde sans alcool 0.0% bouteilles",
     "ean": "5410228267447",
+    "nutritionalInfo": {
+      "sucres": null
+    }
+  },
+  {
+    "brand": "BRASSEURS SAVOYARDS",
+    "description": "Bières dégustations bio 0%",
+    "ean": "3760009532304",
+    "nutritionalInfo": {
+      "sucres": null
+    }
+  },
+  {
+    "brand": "CELTA",
+    "description": "Bière brune sans alcool",
+    "ean": "3261570000624",
     "nutritionalInfo": {
       "sucres": null
     }
@@ -473,7 +497,7 @@
   },
   {
     "brand": "GOLDENBERG",
-    "description": "Panaché 0.4% bouteilles",
+    "description": "Panaché 0.4% pack bouteilles",
     "ean": "3162330080590",
     "nutritionalInfo": {
       "sucres": null
@@ -529,6 +553,14 @@
   },
   {
     "brand": "MARTENS",
+    "description": "Bière sans alcool",
+    "ean": "5411616001186",
+    "nutritionalInfo": {
+      "sucres": null
+    }
+  },
+  {
+    "brand": "MARTENS",
     "description": "Panaché boîte",
     "ean": "5411616007669",
     "nutritionalInfo": {
@@ -536,9 +568,9 @@
     }
   },
   {
-    "brand": "MARTENS",
-    "description": "Bière sans alcool",
-    "ean": "5411616001186",
+    "brand": "MOULINS D'ASCQ",
+    "description": "Bière bio sans alcool",
+    "ean": "3760035362296",
     "nutritionalInfo": {
       "sucres": null
     }
@@ -553,8 +585,8 @@
   },
   {
     "brand": "STERLING",
-    "description": "Bière aromatisée citron 0% bouteilles",
-    "ean": "3596710533794",
+    "description": "Boisson aromatisée à base de bière sans alcool saveur pêche",
+    "ean": "3596710543458",
     "nutritionalInfo": {
       "sucres": null
     }
@@ -568,9 +600,9 @@
     }
   },
   {
-    "brand": "LE BALLON",
-    "description": "Ethylotest 0,5g/l de sang à la norme NF",
-    "ean": "2903202116100",
+    "brand": "STERLING",
+    "description": "Bière aromatisée citron 0% bouteilles",
+    "ean": "3596710533794",
     "nutritionalInfo": {
       "sucres": null
     }
