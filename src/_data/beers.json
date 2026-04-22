@@ -64,6 +64,14 @@
     }
   },
   {
+    "brand": "AFFLIGEM",
+    "description": "Bière sans alcool 0,0% bouteille",
+    "ean": "3119780273775",
+    "nutritionalInfo": {
+      "sucres": 1.8
+    }
+  },
+  {
     "brand": "KRONENBOURG",
     "description": "Bière blonde pur malt sans alcool bouteilles",
     "ean": "3080216054964",
@@ -369,14 +377,6 @@
   },
   {
     "brand": "STERLING",
-    "description": "Panaché 1% pack bouteilles",
-    "ean": "3254560094734",
-    "nutritionalInfo": {
-      "sucres": 6.3
-    }
-  },
-  {
-    "brand": "STERLING",
     "description": "Panaché 0,5% pack bouteilles",
     "ean": "3596710450930",
     "nutritionalInfo": {
@@ -569,14 +569,6 @@
   },
   {
     "brand": "STERLING",
-    "description": "Boisson aromatisée à base de bière sans alcool saveur pêche",
-    "ean": "3596710543458",
-    "nutritionalInfo": {
-      "sucres": null
-    }
-  },
-  {
-    "brand": "STERLING",
     "description": "Bière blonde sans alcool 0% bouteilles",
     "ean": "3596710512409",
     "nutritionalInfo": {
@@ -595,6 +587,14 @@
     "brand": "STERLING",
     "description": "Bière aromatisée citron 0% bouteilles",
     "ean": "3596710533794",
+    "nutritionalInfo": {
+      "sucres": null
+    }
+  },
+  {
+    "brand": "STERLING",
+    "description": "Boisson aromatisée à base de bière sans alcool saveur pêche",
+    "ean": "3596710543458",
     "nutritionalInfo": {
       "sucres": null
     }
