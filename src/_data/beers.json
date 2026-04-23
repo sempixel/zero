@@ -32,6 +32,14 @@
     }
   },
   {
+    "brand": "TOURTEL TWIST",
+    "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de framboise sans sucres ajoutés boîte",
+    "ean": "3080216064741",
+    "nutritionalInfo": {
+      "sucres": 0.5
+    }
+  },
+  {
     "brand": "HEINEKEN",
     "description": "Bière blonde sans alcool 0,0% bouteilles",
     "ean": "8712000050368",
@@ -185,6 +193,14 @@
   },
   {
     "brand": "TOURTEL TWIST",
+    "description": "Boisson aromatisée à base de bière et au jus de mangue passion 0%",
+    "ean": "3080216052403",
+    "nutritionalInfo": {
+      "sucres": 4.7
+    }
+  },
+  {
+    "brand": "TOURTEL TWIST",
     "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de citron",
     "ean": "3080216055336",
     "nutritionalInfo": {
@@ -195,14 +211,6 @@
     "brand": "TOURTEL TWIST",
     "description": "Bière sans alcool 0.0% aromatisée au jus de citron",
     "ean": "3080216058405",
-    "nutritionalInfo": {
-      "sucres": 4.7
-    }
-  },
-  {
-    "brand": "TOURTEL TWIST",
-    "description": "Boisson aromatisée à base de bière et au jus de mangue passion 0%",
-    "ean": "3080216052403",
     "nutritionalInfo": {
       "sucres": 4.7
     }
@@ -226,7 +234,7 @@
   {
     "brand": "DESPERADOS",
     "description": "Bière blonde agrumes citron Virgin sans alcool 0,0% bouteilles",
-    "ean": "3119780273904",
+    "ean": "3119789827498",
     "nutritionalInfo": {
       "sucres": 4.8
     }
@@ -234,7 +242,7 @@
   {
     "brand": "DESPERADOS",
     "description": "Bière blonde agrumes citron Virgin sans alcool 0,0% bouteilles",
-    "ean": "3119789827498",
+    "ean": "3119780273904",
     "nutritionalInfo": {
       "sucres": 4.8
     }
@@ -257,6 +265,14 @@
   },
   {
     "brand": "TOURTEL TWIST",
+    "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de pastèque et notes de melon",
+    "ean": "3080216059815",
+    "nutritionalInfo": {
+      "sucres": 4.8
+    }
+  },
+  {
+    "brand": "TOURTEL TWIST",
     "description": "Bière sans alcool 0.0% aromatisée aux jus de fraise citron vert et notes de menthe",
     "ean": "3080216061627",
     "nutritionalInfo": {
@@ -267,14 +283,6 @@
     "brand": "TOURTEL TWIST",
     "description": "Bière sans alcool 0.0% aromatisée au jus d'abricot",
     "ean": "3080216063676",
-    "nutritionalInfo": {
-      "sucres": 4.8
-    }
-  },
-  {
-    "brand": "TOURTEL TWIST",
-    "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de pastèque et notes de melon",
-    "ean": "3080216059815",
     "nutritionalInfo": {
       "sucres": 4.8
     }
@@ -321,16 +329,16 @@
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Bière sans alcool 0,0% aromatisée à la cerise griotte bouteilles",
-    "ean": "3080216050232",
+    "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de mûre et notes de myrtille",
+    "ean": "3080216054803",
     "nutritionalInfo": {
       "sucres": 5.1
     }
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de mûre et notes de myrtille",
-    "ean": "3080216054803",
+    "description": "Bière sans alcool 0,0% aromatisée à la cerise griotte bouteilles",
+    "ean": "3080216050232",
     "nutritionalInfo": {
       "sucres": 5.1
     }
@@ -369,16 +377,16 @@
   },
   {
     "brand": "STERLING",
-    "description": "Panaché 1% pack bouteilles",
-    "ean": "3254560094734",
+    "description": "Panaché 0,5% pack bouteilles",
+    "ean": "3596710450930",
     "nutritionalInfo": {
       "sucres": 6.3
     }
   },
   {
     "brand": "STERLING",
-    "description": "Panaché 0,5% pack bouteilles",
-    "ean": "3596710450930",
+    "description": "Panaché 1% pack bouteilles",
+    "ean": "3254560094734",
     "nutritionalInfo": {
       "sucres": 6.3
     }
