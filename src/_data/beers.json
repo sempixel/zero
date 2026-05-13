@@ -160,11 +160,27 @@
     }
   },
   {
+    "brand": "SLASH",
+    "description": "Berry Bière sans alcool aromatisée framboise cassis mûre",
+    "ean": "3244850007056",
+    "nutritionalInfo": {
+      "sucres": 3.6
+    }
+  },
+  {
     "brand": "1664",
     "description": "Blanc Bière blanche sans alcool 0.0% bouteilles",
     "ean": "3080216058603",
     "nutritionalInfo": {
       "sucres": 3.8
+    }
+  },
+  {
+    "brand": "SLASH",
+    "description": "Bière sans alcool saveur mangue",
+    "ean": "3244850007049",
+    "nutritionalInfo": {
+      "sucres": 3.9
     }
   },
   {
@@ -595,6 +611,14 @@
     "brand": "MARTENS",
     "description": "Panaché boîte",
     "ean": "5411616007669",
+    "nutritionalInfo": {
+      "sucres": null
+    }
+  },
+  {
+    "brand": "METEOR",
+    "description": "Bière IPA sans alcool 0.0% bouteilles",
+    "ean": "3156140738277",
     "nutritionalInfo": {
       "sucres": null
     }
