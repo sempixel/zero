@@ -345,16 +345,16 @@
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Boisson aromatisé à base de bière et au jus de fraise et notes de rhubarbe 0.0%",
-    "ean": "3080216056296",
+    "description": "Bière sans alcool 0.0% à la framboise bouteilles",
+    "ean": "3080216055305",
     "nutritionalInfo": {
       "sucres": 4.9
     }
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Bière sans alcool 0.0% à la framboise bouteilles",
-    "ean": "3080216055305",
+    "description": "Boisson aromatisé à base de bière et au jus de fraise et notes de rhubarbe 0.0%",
+    "ean": "3080216056296",
     "nutritionalInfo": {
       "sucres": 4.9
     }
@@ -619,6 +619,14 @@
     "brand": "METEOR",
     "description": "Bière IPA sans alcool 0.0% bouteilles",
     "ean": "3156140738277",
+    "nutritionalInfo": {
+      "sucres": null
+    }
+  },
+  {
+    "brand": "MOULINS D'ASCQ",
+    "description": "Bière bio sans alcool",
+    "ean": "3760035362296",
     "nutritionalInfo": {
       "sucres": null
     }
