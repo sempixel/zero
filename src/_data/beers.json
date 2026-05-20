@@ -105,16 +105,16 @@
   },
   {
     "brand": "KRONENBOURG",
-    "description": "Bière blonde pur malt sans alcool bouteilles",
-    "ean": "3080216054964",
+    "description": "Bière blonde sans alcool bouteilles",
+    "ean": "3080216054933",
     "nutritionalInfo": {
       "sucres": 2.9
     }
   },
   {
     "brand": "KRONENBOURG",
-    "description": "Bière blonde sans alcool bouteilles",
-    "ean": "3080216054933",
+    "description": "Bière blonde pur malt sans alcool bouteilles",
+    "ean": "3080216054964",
     "nutritionalInfo": {
       "sucres": 2.9
     }
@@ -328,14 +328,6 @@
     }
   },
   {
-    "brand": "TOURTEL",
-    "description": "Bière Twist sans alcool 0.0% aromatisée framboise boîtes",
-    "ean": "3080216058467",
-    "nutritionalInfo": {
-      "sucres": 4.9
-    }
-  },
-  {
     "brand": "TOURTEL TWIST",
     "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de framboise",
     "ean": "3080216055367",
@@ -347,6 +339,14 @@
     "brand": "TOURTEL TWIST",
     "description": "Bière sans alcool 0.0% à la framboise bouteilles",
     "ean": "3080216055305",
+    "nutritionalInfo": {
+      "sucres": 4.9
+    }
+  },
+  {
+    "brand": "TOURTEL",
+    "description": "Bière Twist sans alcool 0.0% aromatisée framboise boîtes",
+    "ean": "3080216058467",
     "nutritionalInfo": {
       "sucres": 4.9
     }
@@ -496,9 +496,9 @@
     }
   },
   {
-    "brand": "LA CHOUFFE",
-    "description": "Bière blonde belge sans alcool pack bouteilles",
-    "ean": "5410769802138",
+    "brand": "CORONA",
+    "description": "Bière blonde sans alcool 0.0% bouteilles",
+    "ean": "5410228292203",
     "nutritionalInfo": {
       "sucres": null
     }
@@ -512,14 +512,6 @@
     }
   },
   {
-    "brand": "LE BALLON",
-    "description": "Ethylotest 0,5g/l de sang à la norme NF",
-    "ean": "2903202116100",
-    "nutritionalInfo": {
-      "sucres": null
-    }
-  },
-  {
     "brand": "LEFFE",
     "description": "Bière blonde sans alcool 0.0% bouteilles",
     "ean": "5410228267447",
@@ -528,17 +520,41 @@
     }
   },
   {
-    "brand": "BRASSEURS SAVOYARDS",
-    "description": "Bières dégustations bio 0%",
-    "ean": "3760009532304",
+    "brand": "LICORNE",
+    "description": "Bière black sans alcool 0% bouteilles",
+    "ean": "3244850006059",
     "nutritionalInfo": {
       "sucres": null
     }
   },
   {
-    "brand": "CORONA",
-    "description": "Bière blonde sans alcool 0.0% bouteilles",
-    "ean": "5410228292203",
+    "brand": "MOULINS D'ASCQ",
+    "description": "Bière bio sans alcool",
+    "ean": "3760035362296",
+    "nutritionalInfo": {
+      "sucres": null
+    }
+  },
+  {
+    "brand": "LA CHOUFFE",
+    "description": "Bière blonde belge sans alcool pack bouteilles",
+    "ean": "5410769802138",
+    "nutritionalInfo": {
+      "sucres": null
+    }
+  },
+  {
+    "brand": "LE BALLON",
+    "description": "Ethylotest 0,5g/l de sang à la norme NF",
+    "ean": "2903202116100",
+    "nutritionalInfo": {
+      "sucres": null
+    }
+  },
+  {
+    "brand": "BRASSEURS SAVOYARDS",
+    "description": "Bières dégustations bio 0%",
+    "ean": "3760009532304",
     "nutritionalInfo": {
       "sucres": null
     }
@@ -584,14 +600,6 @@
     }
   },
   {
-    "brand": "LICORNE",
-    "description": "Bière black sans alcool 0% bouteilles",
-    "ean": "3244850006059",
-    "nutritionalInfo": {
-      "sucres": null
-    }
-  },
-  {
     "brand": "LIEFMANS",
     "description": "Bière aux fruits 0,0% bouteille",
     "ean": "5411686701597",
@@ -619,14 +627,6 @@
     "brand": "METEOR",
     "description": "Bière IPA sans alcool 0.0% bouteilles",
     "ean": "3156140738277",
-    "nutritionalInfo": {
-      "sucres": null
-    }
-  },
-  {
-    "brand": "MOULINS D'ASCQ",
-    "description": "Bière bio sans alcool",
-    "ean": "3760035362296",
     "nutritionalInfo": {
       "sucres": null
     }
