@@ -504,9 +504,25 @@
     }
   },
   {
+    "brand": "LA CHOUFFE",
+    "description": "Bière blonde belge sans alcool pack bouteilles",
+    "ean": "5410769802138",
+    "nutritionalInfo": {
+      "sucres": null
+    }
+  },
+  {
     "brand": "LA PARISIENNE",
     "description": "Bière blonde sans alcool 0,0% bio bouteille",
     "ean": "3760039241283",
+    "nutritionalInfo": {
+      "sucres": null
+    }
+  },
+  {
+    "brand": "LEFFE",
+    "description": "Bière Ruby sans alcool 0.0% aromatisée fruits rouge bouteilles",
+    "ean": "5410228281955",
     "nutritionalInfo": {
       "sucres": null
     }
@@ -531,14 +547,6 @@
     "brand": "MOULINS D'ASCQ",
     "description": "Bière bio sans alcool",
     "ean": "3760035362296",
-    "nutritionalInfo": {
-      "sucres": null
-    }
-  },
-  {
-    "brand": "LA CHOUFFE",
-    "description": "Bière blonde belge sans alcool pack bouteilles",
-    "ean": "5410769802138",
     "nutritionalInfo": {
       "sucres": null
     }
@@ -579,14 +587,6 @@
     "brand": "LA GOUDALE",
     "description": "Bière blonde sans alcool 0.0% bouteilles",
     "ean": "3261570007883",
-    "nutritionalInfo": {
-      "sucres": null
-    }
-  },
-  {
-    "brand": "LEFFE",
-    "description": "Bière Ruby sans alcool 0.0% aromatisée fruits rouge bouteilles",
-    "ean": "5410228281955",
     "nutritionalInfo": {
       "sucres": null
     }
