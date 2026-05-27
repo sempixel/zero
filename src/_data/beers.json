@@ -136,6 +136,14 @@
     }
   },
   {
+    "brand": "SASSY",
+    "description": "Cidre sans sucres ajoutés 0%",
+    "ean": "3770029033163",
+    "nutritionalInfo": {
+      "sucres": 3.3
+    }
+  },
+  {
     "brand": "AFFLIGEM",
     "description": "Bière blonde belge d'abbaye sans alcool 0.0% bouteilles",
     "ean": "3119780272747",
@@ -493,6 +501,14 @@
     "ean": "3505620691920",
     "nutritionalInfo": {
       "sucres": 11.7
+    }
+  },
+  {
+    "brand": "VITAMALT",
+    "description": "classique sans alcool en bouteille",
+    "ean": "0737297000092",
+    "nutritionalInfo": {
+      "sucres": 14
     }
   },
   {
