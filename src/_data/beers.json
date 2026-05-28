@@ -641,6 +641,14 @@
   },
   {
     "brand": "STERLING",
+    "description": "Bière aromatisée framboise 0% bouteilles",
+    "ean": "3596710533787",
+    "nutritionalInfo": {
+      "sucres": null
+    }
+  },
+  {
+    "brand": "STERLING",
     "description": "Boisson aromatisée à base de bière sans alcool saveur pêche",
     "ean": "3596710543458",
     "nutritionalInfo": {
@@ -651,14 +659,6 @@
     "brand": "STERLING",
     "description": "Bière blonde sans alcool 0% bouteilles",
     "ean": "3596710512409",
-    "nutritionalInfo": {
-      "sucres": null
-    }
-  },
-  {
-    "brand": "STERLING",
-    "description": "Bière aromatisée framboise 0% bouteilles",
-    "ean": "3596710533787",
     "nutritionalInfo": {
       "sucres": null
     }
