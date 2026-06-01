@@ -1,6 +1,14 @@
 [
   {
     "brand": "1664",
+    "description": "Bière blonde sans alcool 0,0% bouteilles",
+    "ean": "3080216055442",
+    "nutritionalInfo": {
+      "sucres": 0
+    }
+  },
+  {
+    "brand": "1664",
     "description": "Bière blonde sans alcool bouteilles",
     "ean": "3080216055725",
     "nutritionalInfo": {
@@ -11,14 +19,6 @@
     "brand": "1664",
     "description": "Bière blonde sans alcool boîte",
     "ean": "3080216057361",
-    "nutritionalInfo": {
-      "sucres": 0
-    }
-  },
-  {
-    "brand": "1664",
-    "description": "Bière blonde sans alcool 0,0% bouteilles",
-    "ean": "3080216055442",
     "nutritionalInfo": {
       "sucres": 0
     }
@@ -425,16 +425,16 @@
   },
   {
     "brand": "STERLING",
-    "description": "Panaché 1% pack bouteilles",
-    "ean": "3254560094734",
+    "description": "Panaché 0,5% pack bouteilles",
+    "ean": "3596710450930",
     "nutritionalInfo": {
       "sucres": 6.3
     }
   },
   {
     "brand": "STERLING",
-    "description": "Panaché 0,5% pack bouteilles",
-    "ean": "3596710450930",
+    "description": "Panaché 1% pack bouteilles",
+    "ean": "3254560094734",
     "nutritionalInfo": {
       "sucres": 6.3
     }
