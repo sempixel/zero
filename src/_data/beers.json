@@ -105,14 +105,6 @@
   },
   {
     "brand": "KRONENBOURG",
-    "description": "Bière blonde pur malt sans alcool bouteilles",
-    "ean": "3080216054964",
-    "nutritionalInfo": {
-      "sucres": 2.9
-    }
-  },
-  {
-    "brand": "KRONENBOURG",
     "description": "Bière blonde sans alcool bouteilles",
     "ean": "3080216054933",
     "nutritionalInfo": {
