@@ -592,6 +592,14 @@
     }
   },
   {
+    "brand": "LICORNE",
+    "description": "Bière black sans alcool 0% bouteilles",
+    "ean": "3244850006059",
+    "nutritionalInfo": {
+      "sucres": null
+    }
+  },
+  {
     "brand": "LIEFMANS",
     "description": "Bière aux fruits 0,0% bouteille",
     "ean": "5411686701597",
