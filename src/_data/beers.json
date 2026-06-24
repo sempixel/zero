@@ -113,7 +113,7 @@
   },
   {
     "brand": "GRIMBERGEN",
-    "description": "Bière blonde sans alcool 0.0% bouteilles",
+    "description": "Bière blonde 0.0% bouteilles",
     "ean": "3080216057811",
     "nutritionalInfo": {
       "sucres": 3.2
@@ -320,14 +320,6 @@
     }
   },
   {
-    "brand": "TOURTEL TWIST",
-    "description": "Bière sans alcool 0.0% aromatisée au jus d'abricot",
-    "ean": "3080216063676",
-    "nutritionalInfo": {
-      "sucres": 4.8
-    }
-  },
-  {
     "brand": "TOURTEL",
     "description": "Bière Twist sans alcool 0.0% aromatisée framboise boîtes",
     "ean": "3080216058467",
@@ -504,17 +496,17 @@
     }
   },
   {
-    "brand": "LEFFE",
-    "description": "Bière blonde sans alcool 0.0% bouteilles",
-    "ean": "5410228267447",
+    "brand": "LA CHOUFFE",
+    "description": "Bière blonde belge sans alcool pack bouteilles",
+    "ean": "5410769802138",
     "nutritionalInfo": {
       "sucres": null
     }
   },
   {
-    "brand": "LA CHOUFFE",
-    "description": "Bière blonde belge sans alcool pack bouteilles",
-    "ean": "5410769802138",
+    "brand": "LEFFE",
+    "description": "Bière blonde sans alcool 0.0% bouteilles",
+    "ean": "5410228267447",
     "nutritionalInfo": {
       "sucres": null
     }
