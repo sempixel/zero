@@ -113,16 +113,16 @@
   },
   {
     "brand": "GRIMBERGEN",
-    "description": "Bière blonde 0.0% bouteilles",
-    "ean": "3080216057811",
+    "description": "Bière blonde sans alcool 0.0% bouteilles",
+    "ean": "3080216056043",
     "nutritionalInfo": {
       "sucres": 3.2
     }
   },
   {
     "brand": "GRIMBERGEN",
-    "description": "Bière blonde sans alcool 0.0% bouteilles",
-    "ean": "3080216056043",
+    "description": "Bière blonde 0.0% bouteilles",
+    "ean": "3080216057811",
     "nutritionalInfo": {
       "sucres": 3.2
     }
