@@ -1,16 +1,16 @@
 [
   {
     "brand": "1664",
-    "description": "Bière blonde sans alcool 0,0% bouteilles",
-    "ean": "3080216055442",
+    "description": "Bière blonde sans alcool bouteilles",
+    "ean": "3080216055725",
     "nutritionalInfo": {
       "sucres": 0
     }
   },
   {
     "brand": "1664",
-    "description": "Bière blonde sans alcool bouteilles",
-    "ean": "3080216055725",
+    "description": "Bière blonde sans alcool 0,0% bouteilles",
+    "ean": "3080216055442",
     "nutritionalInfo": {
       "sucres": 0
     }
@@ -531,6 +531,14 @@
     "brand": "LEFFE",
     "description": "Bière blonde sans alcool 0.0% bouteilles",
     "ean": "5410228267447",
+    "nutritionalInfo": {
+      "sucres": null
+    }
+  },
+  {
+    "brand": "BRASSEURS SAVOYARDS",
+    "description": "Bières dégustations bio 0%",
+    "ean": "3760009532304",
     "nutritionalInfo": {
       "sucres": null
     }
