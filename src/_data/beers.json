@@ -193,16 +193,16 @@
   },
   {
     "brand": "SCHWEPPES",
-    "description": "Boisson gazeuse ginger beer boîtes",
-    "ean": "3124480200280",
+    "description": "Boisson ginger beer",
+    "ean": "3124480193698",
     "nutritionalInfo": {
       "sucres": 4.3
     }
   },
   {
     "brand": "SCHWEPPES",
-    "description": "Boisson ginger beer",
-    "ean": "3124480193698",
+    "description": "Boisson gazeuse ginger beer boîtes",
+    "ean": "3124480200280",
     "nutritionalInfo": {
       "sucres": 4.3
     }
@@ -249,16 +249,16 @@
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Boisson aromatisé à base de bière et pêche 0.0%",
-    "ean": "3080216049250",
+    "description": "Bière sans alcool 0.0% aromatisée au jus de citron",
+    "ean": "3080216058405",
     "nutritionalInfo": {
       "sucres": 4.7
     }
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Bière sans alcool 0.0% aromatisée au jus de citron",
-    "ean": "3080216058405",
+    "description": "Boisson aromatisé à base de bière et pêche 0.0%",
+    "ean": "3080216049250",
     "nutritionalInfo": {
       "sucres": 4.7
     }
@@ -337,16 +337,16 @@
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de framboise",
-    "ean": "3080216055367",
+    "description": "Boisson aromatisé à base de bière et au jus de fraise et notes de rhubarbe 0.0%",
+    "ean": "3080216056296",
     "nutritionalInfo": {
       "sucres": 4.9
     }
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Boisson aromatisé à base de bière et au jus de fraise et notes de rhubarbe 0.0%",
-    "ean": "3080216056296",
+    "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de framboise",
+    "ean": "3080216055367",
     "nutritionalInfo": {
       "sucres": 4.9
     }
