@@ -33,6 +33,14 @@
   },
   {
     "brand": "TOURTEL TWIST",
+    "description": "Boisson aromatisée à base de bière sans alcool et au jus de framboise sans sucres ajoutés 0.0%",
+    "ean": "3080216064741",
+    "nutritionalInfo": {
+      "sucres": 0.5
+    }
+  },
+  {
+    "brand": "TOURTEL TWIST",
     "description": "Boisson aromatisée à base de bière sans alcool et au jus de citron sans sucres ajoutés 0.0%",
     "ean": "3080216064703",
     "nutritionalInfo": {
@@ -51,14 +59,6 @@
     "brand": "TOURTEL TWIST",
     "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de citron sans sucres ajoutés boîte",
     "ean": "3080216065342",
-    "nutritionalInfo": {
-      "sucres": 0.5
-    }
-  },
-  {
-    "brand": "TOURTEL TWIST",
-    "description": "Boisson aromatisée à base de bière sans alcool et au jus de framboise sans sucres ajoutés 0.0%",
-    "ean": "3080216064741",
     "nutritionalInfo": {
       "sucres": 0.5
     }
@@ -249,16 +249,16 @@
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Bière sans alcool 0.0% aromatisée au jus de citron",
-    "ean": "3080216058405",
+    "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de citron",
+    "ean": "3080216055336",
     "nutritionalInfo": {
       "sucres": 4.7
     }
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de citron",
-    "ean": "3080216055336",
+    "description": "Bière sans alcool 0.0% aromatisée au jus de citron",
+    "ean": "3080216058405",
     "nutritionalInfo": {
       "sucres": 4.7
     }
@@ -297,6 +297,14 @@
   },
   {
     "brand": "TOURTEL TWIST",
+    "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de pastèque et notes de melon",
+    "ean": "3080216059815",
+    "nutritionalInfo": {
+      "sucres": 4.8
+    }
+  },
+  {
+    "brand": "TOURTEL TWIST",
     "description": "Bière sans alcool 0.0% aromatisée aux jus de fraise citron vert et notes de menthe",
     "ean": "3080216061627",
     "nutritionalInfo": {
@@ -307,14 +315,6 @@
     "brand": "TOURTEL TWIST",
     "description": "Bière sans alcool 0.0% aromatisée au jus d'ananas",
     "ean": "3080216054766",
-    "nutritionalInfo": {
-      "sucres": 4.8
-    }
-  },
-  {
-    "brand": "TOURTEL TWIST",
-    "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de pastèque et notes de melon",
-    "ean": "3080216059815",
     "nutritionalInfo": {
       "sucres": 4.8
     }
@@ -361,16 +361,16 @@
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Bière sans alcool 0,0% aromatisée à la cerise griotte bouteilles",
-    "ean": "3080216050232",
+    "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de mûre et notes de myrtille",
+    "ean": "3080216054803",
     "nutritionalInfo": {
       "sucres": 5.1
     }
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de mûre et notes de myrtille",
-    "ean": "3080216054803",
+    "description": "Bière sans alcool 0,0% aromatisée à la cerise griotte bouteilles",
+    "ean": "3080216050232",
     "nutritionalInfo": {
       "sucres": 5.1
     }
@@ -585,16 +585,16 @@
   },
   {
     "brand": "LEFFE",
-    "description": "Bière blonde sans alcool 0,0% bouteilles",
-    "ean": "5410228267171",
+    "description": "Bière Ruby sans alcool 0.0% aromatisée fruits rouge bouteilles",
+    "ean": "5410228281955",
     "nutritionalInfo": {
       "sucres": null
     }
   },
   {
     "brand": "LEFFE",
-    "description": "Bière Ruby sans alcool 0.0% aromatisée fruits rouge bouteilles",
-    "ean": "5410228281955",
+    "description": "Bière blonde sans alcool 0,0% bouteilles",
+    "ean": "5410228267171",
     "nutritionalInfo": {
       "sucres": null
     }
