@@ -274,7 +274,7 @@
   {
     "brand": "DESPERADOS",
     "description": "Bière blonde agrumes citron Virgin sans alcool 0,0% bouteilles",
-    "ean": "3119780273904",
+    "ean": "3119789827498",
     "nutritionalInfo": {
       "sucres": 4.8
     }
@@ -282,7 +282,7 @@
   {
     "brand": "DESPERADOS",
     "description": "Bière blonde agrumes citron Virgin sans alcool 0,0% bouteilles",
-    "ean": "3119789827498",
+    "ean": "3119780273904",
     "nutritionalInfo": {
       "sucres": 4.8
     }
@@ -496,14 +496,6 @@
     }
   },
   {
-    "brand": "LA CHOUFFE",
-    "description": "Bière blonde belge sans alcool pack bouteilles",
-    "ean": "5410769802138",
-    "nutritionalInfo": {
-      "sucres": null
-    }
-  },
-  {
     "brand": "LEFFE",
     "description": "Bière blonde sans alcool 0.0% bouteilles",
     "ean": "5410228267447",
@@ -520,6 +512,14 @@
     }
   },
   {
+    "brand": "LA CHOUFFE",
+    "description": "Bière blonde belge sans alcool pack bouteilles",
+    "ean": "5410769802138",
+    "nutritionalInfo": {
+      "sucres": null
+    }
+  },
+  {
     "brand": "LE BALLON",
     "description": "Ethylotest 0,5g/l de sang à la norme NF",
     "ean": "2903202116100",
@@ -531,6 +531,22 @@
     "brand": "BRASSEURS SAVOYARDS",
     "description": "Bières dégustations bio 0%",
     "ean": "3760009532304",
+    "nutritionalInfo": {
+      "sucres": null
+    }
+  },
+  {
+    "brand": "CELTA",
+    "description": "Bière blonde 0.4%",
+    "ean": "3261570002468",
+    "nutritionalInfo": {
+      "sucres": null
+    }
+  },
+  {
+    "brand": "CELTA",
+    "description": "Bière blonde 0.4%",
+    "ean": "3261570004332",
     "nutritionalInfo": {
       "sucres": null
     }
@@ -603,6 +619,14 @@
     "brand": "LICORNE",
     "description": "Bière black sans alcool 0% bouteilles",
     "ean": "3244850006059",
+    "nutritionalInfo": {
+      "sucres": null
+    }
+  },
+  {
+    "brand": "LIEFMANS",
+    "description": "Bière fruitée arôme pêche 0%",
+    "ean": "5411686702976",
     "nutritionalInfo": {
       "sucres": null
     }
