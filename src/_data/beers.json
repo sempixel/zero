@@ -432,6 +432,14 @@
     }
   },
   {
+    "brand": "FORCE 4",
+    "description": "Panaché bière et limonade bouteilles",
+    "ean": "3080216053257",
+    "nutritionalInfo": {
+      "sucres": 6.5
+    }
+  },
+  {
     "brand": "DESPERADOS",
     "description": "Bière blonde arôme Virgin mojito sans alcool 0,0% bouteilles",
     "ean": "3119780273911",
