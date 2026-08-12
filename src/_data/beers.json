@@ -249,16 +249,16 @@
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Bière sans alcool 0.0% aromatisée au jus de citron",
-    "ean": "3080216058405",
+    "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de citron",
+    "ean": "3080216055336",
     "nutritionalInfo": {
       "sucres": 4.7
     }
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de citron",
-    "ean": "3080216055336",
+    "description": "Bière sans alcool 0.0% aromatisée au jus de citron",
+    "ean": "3080216058405",
     "nutritionalInfo": {
       "sucres": 4.7
     }
@@ -649,16 +649,16 @@
   },
   {
     "brand": "LIEFMANS",
-    "description": "Bière fruitée arôme pêche 0%",
-    "ean": "5411686702976",
+    "description": "Bière aux fruits 0,0% bouteille",
+    "ean": "5411686701597",
     "nutritionalInfo": {
       "sucres": null
     }
   },
   {
     "brand": "LIEFMANS",
-    "description": "Bière aux fruits 0,0% bouteille",
-    "ean": "5411686701597",
+    "description": "Bière fruitée arôme pêche 0%",
+    "ean": "5411686702976",
     "nutritionalInfo": {
       "sucres": null
     }
