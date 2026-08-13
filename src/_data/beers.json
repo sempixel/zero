@@ -9,16 +9,16 @@
   },
   {
     "brand": "1664",
-    "description": "Bière blonde sans alcool 0,0% bouteilles",
-    "ean": "3080216055442",
+    "description": "Bière blonde sans alcool boîte",
+    "ean": "3080216057361",
     "nutritionalInfo": {
       "sucres": 0
     }
   },
   {
     "brand": "1664",
-    "description": "Bière blonde sans alcool boîte",
-    "ean": "3080216057361",
+    "description": "Bière blonde sans alcool 0,0% bouteilles",
+    "ean": "3080216055442",
     "nutritionalInfo": {
       "sucres": 0
     }
@@ -280,14 +280,6 @@
     }
   },
   {
-    "brand": "DESPERADOS",
-    "description": "Bière blonde agrumes citron Virgin sans alcool 0,0% bouteilles",
-    "ean": "3119780273904",
-    "nutritionalInfo": {
-      "sucres": 4.8
-    }
-  },
-  {
     "brand": "TOURTEL TWIST",
     "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus d'agrume",
     "ean": "3080216055398",
@@ -401,14 +393,6 @@
   },
   {
     "brand": "DESPERADOS",
-    "description": "Bière Red aromatisée framboise & zestes de citron vert fresh berry virgin 0.0% bouteilles",
-    "ean": "3119789828938",
-    "nutritionalInfo": {
-      "sucres": 6
-    }
-  },
-  {
-    "brand": "DESPERADOS",
     "description": "Bière blonde arome Virgin punch 0%",
     "ean": "3119789831662",
     "nutritionalInfo": {
@@ -496,19 +480,27 @@
     }
   },
   {
-    "brand": "BOTTOMS UP",
-    "description": "Bière de gingembre sans alcool 0% bio 1x33cl bouteille",
-    "ean": "3505620691920",
-    "nutritionalInfo": {
-      "sucres": 11.7
-    }
-  },
-  {
     "brand": "VITAMALT",
     "description": "classique sans alcool en bouteille",
     "ean": "0737297000092",
     "nutritionalInfo": {
       "sucres": 14
+    }
+  },
+  {
+    "brand": "DESPERADOS",
+    "description": "Bière blonde agrumes citron Virgin sans alcool 0,0% bouteilles",
+    "ean": "3119780273904",
+    "nutritionalInfo": {
+      "sucres": 100
+    }
+  },
+  {
+    "brand": "DESPERADOS",
+    "description": "Bière Red aromatisée framboise & zestes de citron vert fresh berry virgin 0.0% bouteilles",
+    "ean": "3119789828938",
+    "nutritionalInfo": {
+      "sucres": 100
     }
   },
   {
@@ -563,6 +555,14 @@
     "brand": "CELTA",
     "description": "Bière blonde 0.4%",
     "ean": "3261570004332",
+    "nutritionalInfo": {
+      "sucres": null
+    }
+  },
+  {
+    "brand": "CELTA",
+    "description": "Bière brune sans alcool",
+    "ean": "3261570000624",
     "nutritionalInfo": {
       "sucres": null
     }
