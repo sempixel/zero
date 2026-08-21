@@ -241,6 +241,14 @@
   },
   {
     "brand": "TOURTEL TWIST",
+    "description": "Boisson aromatisé à base de bière et pêche 0.0%",
+    "ean": "3080216049250",
+    "nutritionalInfo": {
+      "sucres": 4.7
+    }
+  },
+  {
+    "brand": "TOURTEL TWIST",
     "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de citron",
     "ean": "3080216055336",
     "nutritionalInfo": {
@@ -257,14 +265,6 @@
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Boisson aromatisé à base de bière et pêche 0.0%",
-    "ean": "3080216049250",
-    "nutritionalInfo": {
-      "sucres": 4.7
-    }
-  },
-  {
-    "brand": "TOURTEL TWIST",
     "description": "Bière sans alcool 0.0% aromatisée au jus de citron boîtes",
     "ean": "3080216058412",
     "nutritionalInfo": {
@@ -275,6 +275,14 @@
     "brand": "DESPERADOS",
     "description": "Bière blonde agrumes citron Virgin sans alcool 0,0% bouteilles",
     "ean": "3119789827498",
+    "nutritionalInfo": {
+      "sucres": 4.8
+    }
+  },
+  {
+    "brand": "DESPERADOS",
+    "description": "Bière blonde agrumes citron Virgin sans alcool 0,0% bouteilles",
+    "ean": "3119780273904",
     "nutritionalInfo": {
       "sucres": 4.8
     }
@@ -385,6 +393,14 @@
   },
   {
     "brand": "DESPERADOS",
+    "description": "Bière Red aromatisée framboise & zestes de citron vert fresh berry virgin 0.0% bouteilles",
+    "ean": "3119789828938",
+    "nutritionalInfo": {
+      "sucres": 6
+    }
+  },
+  {
+    "brand": "DESPERADOS",
     "description": "Bière blonde arome Virgin punch 0%",
     "ean": "3119789831662",
     "nutritionalInfo": {
@@ -477,22 +493,6 @@
     "ean": "0737297000092",
     "nutritionalInfo": {
       "sucres": 14
-    }
-  },
-  {
-    "brand": "DESPERADOS",
-    "description": "Bière blonde agrumes citron Virgin sans alcool 0,0% bouteilles",
-    "ean": "3119780273904",
-    "nutritionalInfo": {
-      "sucres": 100
-    }
-  },
-  {
-    "brand": "DESPERADOS",
-    "description": "Bière Red aromatisée framboise & zestes de citron vert fresh berry virgin 0.0% bouteilles",
-    "ean": "3119789828938",
-    "nutritionalInfo": {
-      "sucres": 100
     }
   },
   {
