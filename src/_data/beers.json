@@ -193,6 +193,14 @@
   },
   {
     "brand": "SCHWEPPES",
+    "description": "Boisson gazeuse ginger beer boîtes",
+    "ean": "3124480200280",
+    "nutritionalInfo": {
+      "sucres": 4.3
+    }
+  },
+  {
+    "brand": "SCHWEPPES",
     "description": "Boisson ginger beer",
     "ean": "3124480193698",
     "nutritionalInfo": {
@@ -485,14 +493,6 @@
     "ean": "0737297000092",
     "nutritionalInfo": {
       "sucres": 14
-    }
-  },
-  {
-    "brand": "SCHWEPPES",
-    "description": "Boisson gazeuse ginger beer boîtes",
-    "ean": "3124480200280",
-    "nutritionalInfo": {
-      "sucres": 100
     }
   },
   {
