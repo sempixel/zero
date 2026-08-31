@@ -496,14 +496,6 @@
     }
   },
   {
-    "brand": "LE BALLON",
-    "description": "Ethylotest 0,5g/l de sang à la norme NF",
-    "ean": "2903202116100",
-    "nutritionalInfo": {
-      "sucres": null
-    }
-  },
-  {
     "brand": "LA PARISIENNE",
     "description": "Bière blonde sans alcool 0,0% bio bouteille",
     "ean": "3760039241283",
@@ -523,6 +515,14 @@
     "brand": "LA CHOUFFE",
     "description": "Bière blonde belge sans alcool pack bouteilles",
     "ean": "5410769802138",
+    "nutritionalInfo": {
+      "sucres": null
+    }
+  },
+  {
+    "brand": "LE BALLON",
+    "description": "Ethylotest 0,5g/l de sang à la norme NF",
+    "ean": "2903202116100",
     "nutritionalInfo": {
       "sucres": null
     }
