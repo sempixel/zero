@@ -409,14 +409,6 @@
   },
   {
     "brand": "STERLING",
-    "description": "Panaché 1% pack bouteilles",
-    "ean": "3254560094734",
-    "nutritionalInfo": {
-      "sucres": 6.3
-    }
-  },
-  {
-    "brand": "STERLING",
     "description": "Panaché 0,5% pack bouteilles",
     "ean": "3596710450930",
     "nutritionalInfo": {
@@ -424,11 +416,11 @@
     }
   },
   {
-    "brand": "FORCE 4",
-    "description": "Panaché bière et limonade bouteilles",
-    "ean": "3080216053257",
+    "brand": "STERLING",
+    "description": "Panaché 1% pack bouteilles",
+    "ean": "3254560094734",
     "nutritionalInfo": {
-      "sucres": 6.5
+      "sucres": 6.3
     }
   },
   {
@@ -697,16 +689,16 @@
   },
   {
     "brand": "STERLING",
-    "description": "Bière blonde sans alcool 0% bouteilles",
-    "ean": "3596710512409",
+    "description": "Boisson aromatisée à base de bière sans alcool saveur pêche",
+    "ean": "3596710543458",
     "nutritionalInfo": {
       "sucres": null
     }
   },
   {
     "brand": "STERLING",
-    "description": "Boisson aromatisée à base de bière sans alcool saveur pêche",
-    "ean": "3596710543458",
+    "description": "Bière blonde sans alcool 0% bouteilles",
+    "ean": "3596710512409",
     "nutritionalInfo": {
       "sucres": null
     }
