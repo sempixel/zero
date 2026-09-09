@@ -512,14 +512,6 @@
     }
   },
   {
-    "brand": "LEFFE",
-    "description": "Bière blonde sans alcool 0.0% bouteilles",
-    "ean": "5410228267447",
-    "nutritionalInfo": {
-      "sucres": null
-    }
-  },
-  {
     "brand": "LA CHOUFFE",
     "description": "Bière blonde belge sans alcool pack bouteilles",
     "ean": "5410769802138",
@@ -531,6 +523,14 @@
     "brand": "LA PARISIENNE",
     "description": "Bière blonde sans alcool 0,0% bio bouteille",
     "ean": "3760039241283",
+    "nutritionalInfo": {
+      "sucres": null
+    }
+  },
+  {
+    "brand": "LEFFE",
+    "description": "Bière blonde sans alcool 0.0% bouteilles",
+    "ean": "5410228267447",
     "nutritionalInfo": {
       "sucres": null
     }
