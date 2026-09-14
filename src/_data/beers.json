@@ -33,16 +33,16 @@
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Boisson aromatisée à base de bière sans alcool et au jus de framboise sans sucres ajoutés 0.0%",
-    "ean": "3080216064741",
+    "description": "Boisson aromatisée à base de bière sans alcool et au jus de citron sans sucres ajoutés 0.0%",
+    "ean": "3080216064703",
     "nutritionalInfo": {
       "sucres": 0.5
     }
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Boisson aromatisée à base de bière sans alcool et au jus de citron sans sucres ajoutés 0.0%",
-    "ean": "3080216064703",
+    "description": "Boisson aromatisée à base de bière sans alcool et au jus de framboise sans sucres ajoutés 0.0%",
+    "ean": "3080216064741",
     "nutritionalInfo": {
       "sucres": 0.5
     }
@@ -313,8 +313,8 @@
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de pastèque et notes de melon",
-    "ean": "3080216059815",
+    "description": "Bière sans alcool 0.0% aromatisée au jus d'ananas",
+    "ean": "3080216054766",
     "nutritionalInfo": {
       "sucres": 4.8
     }
@@ -329,8 +329,8 @@
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Bière sans alcool 0.0% aromatisée au jus d'ananas",
-    "ean": "3080216054766",
+    "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de pastèque et notes de melon",
+    "ean": "3080216059815",
     "nutritionalInfo": {
       "sucres": 4.8
     }
@@ -520,17 +520,17 @@
     }
   },
   {
-    "brand": "LA CHOUFFE",
-    "description": "Bière blonde belge sans alcool pack bouteilles",
-    "ean": "5410769802138",
+    "brand": "LA PARISIENNE",
+    "description": "Bière blonde sans alcool 0,0% bio bouteille",
+    "ean": "3760039241283",
     "nutritionalInfo": {
       "sucres": null
     }
   },
   {
-    "brand": "LA PARISIENNE",
-    "description": "Bière blonde sans alcool 0,0% bio bouteille",
-    "ean": "3760039241283",
+    "brand": "LA CHOUFFE",
+    "description": "Bière blonde belge sans alcool pack bouteilles",
+    "ean": "5410769802138",
     "nutritionalInfo": {
       "sucres": null
     }
@@ -571,6 +571,14 @@
     "brand": "CHOUFFE",
     "description": "Bière belge blonde sans alcool",
     "ean": "5410769804255",
+    "nutritionalInfo": {
+      "sucres": null
+    }
+  },
+  {
+    "brand": "CHOUFFE",
+    "description": "Bière cherry sans alcool",
+    "ean": "5410769804118",
     "nutritionalInfo": {
       "sucres": null
     }
