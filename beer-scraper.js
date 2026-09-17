@@ -20,6 +20,51 @@ function logError(...args) {
     console.error(...args);
 }
 
+// Normalize a beer description to compare beers regardless of container/packaging
+function normalizeBeerDescription(description) {
+    let normalized = (description || '').toLowerCase();
+    // Normalize decimal separators
+    normalized = normalized.replace(/,/g, '.');
+    // Remove container / packaging terms
+    normalized = normalized.replace(/\b(bouteilles?|bo[iî]tes?|canettes?|f[oô]ts?|packs?)\b/g, ' ');
+    // Remove zero-alcohol percentages (0%, 0.0%, 0,0%...)
+    normalized = normalized.replace(/\b0(\.0)?%/g, ' ');
+    // Remove volumes (33cl, 33 cL, 1x33cl, 2L, 1.5L...)
+    normalized = normalized.replace(/\b\d+(\.\d+)?\s*[x×]\s*\d+(\.\d+)?\s*cl\b/gi, ' ');
+    normalized = normalized.replace(/\b\d+(\.\d+)?\s*cl\b/gi, ' ');
+    normalized = normalized.replace(/\b\d+(\.\d+)?\s*l\b/gi, ' ');
+    // Collapse whitespace
+    return normalized.replace(/\s+/g, ' ').trim();
+}
+
+// Merge beers that are the same product sold in different containers (bouteille, boîte, canette...)
+function deduplicateBeers(beers) {
+    const groups = new Map();
+
+    for (const beer of beers) {
+        const normalized = normalizeBeerDescription(beer.description);
+        const key = `${beer.brand}::${normalized || beer.description.toLowerCase()}`;
+        if (!groups.has(key)) groups.set(key, []);
+        groups.get(key).push(beer);
+    }
+
+    const result = [];
+    for (const group of groups.values()) {
+        if (group.length === 1) {
+            result.push(group[0]);
+        } else {
+            // Keep the entry with the most complete data
+            const best = group.sort((a, b) => {
+                const score = beer => (beer.ean ? 1 : 0) + (beer.nutritionalInfo?.sucres != null ? 1 : 0);
+                return score(b) - score(a);
+            })[0];
+            result.push(best);
+        }
+    }
+
+    return result;
+}
+
 // Helper function to auto-scroll the page to load all products
 async function autoScroll(page) {
     await page.evaluate(async () => {
@@ -276,16 +321,21 @@ async function fetchBeerNames() {
             }
         }
 
-        const beersData = products
-            .map(product => ({
-                brand: product.brand,
-                description: product.description,
-                ean: product.ean || null,
-                nutritionalInfo: {
-                    sucres: product.nutritionalInfo?.sucres ?? null
-                }
-            }))
-            .sort((a, b) => {
+        const beersData = deduplicateBeers(products.map(product => ({
+            brand: product.brand,
+            description: product.description,
+            ean: product.ean || null,
+            nutritionalInfo: {
+                sucres: product.nutritionalInfo?.sucres ?? null
+            }
+        })));
+
+        const duplicatesRemoved = products.length - beersData.length;
+        if (duplicatesRemoved > 0) {
+            console.log(`Removed ${duplicatesRemoved} duplicate(s) (same beer in different containers)`);
+        }
+
+        beersData.sort((a, b) => {
                 const aSucres = a.nutritionalInfo.sucres === null ? Infinity : a.nutritionalInfo.sucres;
                 const bSucres = b.nutritionalInfo.sucres === null ? Infinity : b.nutritionalInfo.sucres;
                 return aSucres - bSucres;
