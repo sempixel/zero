@@ -37,11 +37,46 @@ function normalizeBeerDescription(description) {
     return normalized.replace(/\s+/g, ' ').trim();
 }
 
-// Merge beers that are the same product sold in different containers (bouteille, boîte, canette...)
-function deduplicateBeers(beers) {
-    const groups = new Map();
+// Keep the entry with the most complete data within a group
+function pickBest(group) {
+    return group.sort((a, b) => {
+        const score = beer => (beer.ean ? 1 : 0) + (beer.nutritionalInfo?.sucres != null ? 1 : 0);
+        return score(b) - score(a);
+    })[0];
+}
 
+// Keep only real drinks: exclude non-beverage products (e.g. breathalyzers)
+function isBeerProduct(product) {
+    const text = `${product.brand} ${product.description}`.toLowerCase();
+    return !text.includes('ethylotest');
+}
+
+// Merge beers that are the same product (same EAN, or same product in different containers)
+function deduplicateBeers(beers) {
+    // 1) Merge exact duplicates by EAN
+    const eanGroups = new Map();
     for (const beer of beers) {
+        if (beer.ean) {
+            if (!eanGroups.has(beer.ean)) eanGroups.set(beer.ean, []);
+            eanGroups.get(beer.ean).push(beer);
+        }
+    }
+
+    const seenEans = new Set();
+    const byEan = [];
+    for (const beer of beers) {
+        if (beer.ean && eanGroups.has(beer.ean)) {
+            if (seenEans.has(beer.ean)) continue;
+            seenEans.add(beer.ean);
+            byEan.push(pickBest(eanGroups.get(beer.ean)));
+        } else {
+            byEan.push(beer);
+        }
+    }
+
+    // 2) Merge the same beer sold in different containers by normalized description
+    const groups = new Map();
+    for (const beer of byEan) {
         const normalized = normalizeBeerDescription(beer.description);
         const key = `${beer.brand}::${normalized || beer.description.toLowerCase()}`;
         if (!groups.has(key)) groups.set(key, []);
@@ -50,19 +85,96 @@ function deduplicateBeers(beers) {
 
     const result = [];
     for (const group of groups.values()) {
-        if (group.length === 1) {
-            result.push(group[0]);
-        } else {
-            // Keep the entry with the most complete data
-            const best = group.sort((a, b) => {
-                const score = beer => (beer.ean ? 1 : 0) + (beer.nutritionalInfo?.sucres != null ? 1 : 0);
-                return score(b) - score(a);
-            })[0];
-            result.push(best);
-        }
+        result.push(group.length === 1 ? group[0] : pickBest(group));
     }
 
     return result;
+}
+
+// Open Food Facts enrichment (fallback when sucres is missing on Auchan)
+
+const OFF_CACHE_PATH = path.join('src', '_data', 'enrichment.json');
+const OFF_URL = ean => `https://world.openfoodfacts.org/api/v2/product/${ean}.json?fields=code,status,nutriments`;
+
+function loadEnrichmentCache() {
+    try {
+        if (fs.existsSync(OFF_CACHE_PATH)) {
+            return JSON.parse(fs.readFileSync(OFF_CACHE_PATH, 'utf8'));
+        }
+    } catch (error) {
+        logError('Could not load enrichment cache:', error.message);
+    }
+    return {};
+}
+
+function saveEnrichmentCache(cache) {
+    const dir = path.dirname(OFF_CACHE_PATH);
+    if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+    }
+    fs.writeFileSync(OFF_CACHE_PATH, JSON.stringify(cache, null, 2));
+}
+
+async function fetchSucresFromOff(ean) {
+    try {
+        const res = await fetch(OFF_URL(ean), {
+            headers: { 'User-Agent': 'zero-beer-sucres/1.0 (github.com/sempixel/zero)' }
+        });
+        if (!res.ok) return null;
+        const data = await res.json();
+        if (data.status !== 1 || !data.product) return null;
+        const sugar = data.product.nutriments && data.product.nutriments.sugars_100g;
+        if (sugar === undefined || sugar === null) return null;
+        const num = parseFloat(sugar);
+        return isNaN(num) ? null : num;
+    } catch (error) {
+        logError(`Open Food Facts lookup failed for ${ean}:`, error.message);
+        return null;
+    }
+}
+
+// Fill missing sucres from the cache first, then Open Food Facts (and cache the result)
+async function enrichMissingSucres(beers, cache) {
+    const missing = beers.filter(beer => beer.ean &&
+        (beer.nutritionalInfo.sucres === null || beer.nutritionalInfo.sucres === undefined));
+
+    if (missing.length === 0) {
+        console.log('No beers missing sucres, skipping Open Food Facts enrichment');
+        return;
+    }
+
+    let found = 0;
+    let cached = 0;
+    let notFound = 0;
+
+    for (const beer of missing) {
+        const ean = String(beer.ean);
+
+        if (ean in cache) {
+            if (cache[ean] !== null) {
+                beer.nutritionalInfo.sucres = cache[ean];
+                cached++;
+            } else {
+                notFound++;
+            }
+            continue;
+        }
+
+        const value = await fetchSucresFromOff(ean);
+        cache[ean] = value; // remember the result (even null) to avoid re-querying every run
+        if (value !== null) {
+            beer.nutritionalInfo.sucres = value;
+            found++;
+            log(`[OFF] ${beer.brand} ${beer.description} (${ean}) -> ${value}g`);
+        } else {
+            notFound++;
+        }
+
+        // Respect Open Food Facts rate limits
+        await new Promise(resolve => setTimeout(resolve, 300));
+    }
+
+    console.log(`Open Food Facts enrichment: ${found} found, ${cached} from cache, ${notFound} not available`);
 }
 
 // Helper function to auto-scroll the page to load all products
@@ -180,6 +292,7 @@ async function fetchBeerNames() {
     const browser = await chromium.launch({ headless: true });
 
     try {
+        const cache = loadEnrichmentCache();
         const context = await browser.newContext(BROWSER_OPTIONS);
         const page = await context.newPage();
 
@@ -321,7 +434,9 @@ async function fetchBeerNames() {
             }
         }
 
-        const beersData = deduplicateBeers(products.map(product => ({
+        const beersData = deduplicateBeers(products
+            .filter(isBeerProduct)
+            .map(product => ({
             brand: product.brand,
             description: product.description,
             ean: product.ean || null,
@@ -340,6 +455,10 @@ async function fetchBeerNames() {
                 const bSucres = b.nutritionalInfo.sucres === null ? Infinity : b.nutritionalInfo.sucres;
                 return aSucres - bSucres;
             });
+
+        // Fill missing sucres (cache first, then Open Food Facts)
+        await enrichMissingSucres(beersData, cache);
+        saveEnrichmentCache(cache);
 
         // Save to src/_data/beers.json
         const dataDir = path.join('src', '_data');

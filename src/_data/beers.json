@@ -452,7 +452,7 @@
     "description": "Bière blonde sans alcool 0.0% bouteilles",
     "ean": "5410228267447",
     "nutritionalInfo": {
-      "sucres": null
+      "sucres": 1.1
     }
   },
   {
@@ -460,7 +460,7 @@
     "description": "Bière blonde sans alcool 0,0% bio bouteille",
     "ean": "3760039241283",
     "nutritionalInfo": {
-      "sucres": null
+      "sucres": 6
     }
   },
   {
@@ -468,15 +468,7 @@
     "description": "Bière blonde belge sans alcool pack bouteilles",
     "ean": "5410769802138",
     "nutritionalInfo": {
-      "sucres": null
-    }
-  },
-  {
-    "brand": "LE BALLON",
-    "description": "Ethylotest 0,5g/l de sang à la norme NF",
-    "ean": "2903202116100",
-    "nutritionalInfo": {
-      "sucres": null
+      "sucres": 2.3
     }
   },
   {
@@ -492,7 +484,7 @@
     "description": "Bière brune sans alcool",
     "ean": "3261570000624",
     "nutritionalInfo": {
-      "sucres": null
+      "sucres": 1.43
     }
   },
   {
@@ -500,7 +492,7 @@
     "description": "Bière belge blonde sans alcool",
     "ean": "5410769804255",
     "nutritionalInfo": {
-      "sucres": null
+      "sucres": 1.2
     }
   },
   {
@@ -508,7 +500,7 @@
     "description": "Bière cherry sans alcool",
     "ean": "5410769804118",
     "nutritionalInfo": {
-      "sucres": null
+      "sucres": 3.66
     }
   },
   {
@@ -516,7 +508,7 @@
     "description": "Bière blonde sans alcool 0.0% bouteilles",
     "ean": "5410228292203",
     "nutritionalInfo": {
-      "sucres": null
+      "sucres": 0.7
     }
   },
   {
@@ -540,7 +532,7 @@
     "description": "Bière Ruby sans alcool 0.0% aromatisée fruits rouge bouteilles",
     "ean": "5410228281955",
     "nutritionalInfo": {
-      "sucres": null
+      "sucres": 5
     }
   },
   {
@@ -556,7 +548,7 @@
     "description": "Bière fruitée arôme pêche 0%",
     "ean": "5411686702976",
     "nutritionalInfo": {
-      "sucres": null
+      "sucres": 1.7
     }
   },
   {
@@ -572,7 +564,7 @@
     "description": "Bière sans alcool",
     "ean": "5411616001186",
     "nutritionalInfo": {
-      "sucres": null
+      "sucres": 2
     }
   },
   {
