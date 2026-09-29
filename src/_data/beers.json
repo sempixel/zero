@@ -17,16 +17,16 @@
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Boisson aromatisée à base de bière sans alcool et au jus de citron sans sucres ajoutés 0.0%",
-    "ean": "3080216064703",
+    "description": "Boisson aromatisée à base de bière sans alcool et au jus de framboise sans sucres ajoutés 0.0%",
+    "ean": "3080216064741",
     "nutritionalInfo": {
       "sucres": 0.5
     }
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Boisson aromatisée à base de bière sans alcool et au jus de framboise sans sucres ajoutés 0.0%",
-    "ean": "3080216064741",
+    "description": "Boisson aromatisée à base de bière sans alcool et au jus de citron sans sucres ajoutés 0.0%",
+    "ean": "3080216064703",
     "nutritionalInfo": {
       "sucres": 0.5
     }
@@ -225,16 +225,16 @@
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de citron",
-    "ean": "3080216055336",
+    "description": "Bière sans alcool 0.0% aromatisée au jus de citron",
+    "ean": "3080216058405",
     "nutritionalInfo": {
       "sucres": 4.7
     }
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Bière sans alcool 0.0% aromatisée au jus de citron",
-    "ean": "3080216058405",
+    "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de citron",
+    "ean": "3080216055336",
     "nutritionalInfo": {
       "sucres": 4.7
     }
@@ -265,16 +265,16 @@
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Bière sans alcool 0.0% aromatisée aux jus de fraise citron vert et notes de menthe",
-    "ean": "3080216061627",
+    "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de pastèque et notes de melon",
+    "ean": "3080216059815",
     "nutritionalInfo": {
       "sucres": 4.8
     }
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de pastèque et notes de melon",
-    "ean": "3080216059815",
+    "description": "Bière sans alcool 0.0% aromatisée aux jus de fraise citron vert et notes de menthe",
+    "ean": "3080216061627",
     "nutritionalInfo": {
       "sucres": 4.8
     }
@@ -377,16 +377,16 @@
   },
   {
     "brand": "STERLING",
-    "description": "Panaché 1% pack bouteilles",
-    "ean": "3254560094734",
+    "description": "Panaché 0,5% pack bouteilles",
+    "ean": "3596710450930",
     "nutritionalInfo": {
       "sucres": 6.3
     }
   },
   {
     "brand": "STERLING",
-    "description": "Panaché 0,5% pack bouteilles",
-    "ean": "3596710450930",
+    "description": "Panaché 1% pack bouteilles",
+    "ean": "3254560094734",
     "nutritionalInfo": {
       "sucres": 6.3
     }
