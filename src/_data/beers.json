@@ -241,6 +241,14 @@
   },
   {
     "brand": "TOURTEL TWIST",
+    "description": "Bière sans alcool 0.0% aromatisée au jus d'abricot",
+    "ean": "3080216063676",
+    "nutritionalInfo": {
+      "sucres": 4.8
+    }
+  },
+  {
+    "brand": "TOURTEL TWIST",
     "description": "Bière sans alcool 0.0% aromatisée aux jus de fraise citron vert et notes de menthe",
     "ean": "3080216061627",
     "nutritionalInfo": {
@@ -440,6 +448,14 @@
     }
   },
   {
+    "brand": "ABBAYE DE LEFFE",
+    "description": "Bière blonde sans alcool 0.0% bouteilles",
+    "ean": "5410228267447",
+    "nutritionalInfo": {
+      "sucres": 1.1
+    }
+  },
+  {
     "brand": "LA PARISIENNE",
     "description": "Bière blonde sans alcool 0,0% bio bouteille",
     "ean": "3760039241283",
@@ -448,19 +464,19 @@
     }
   },
   {
-    "brand": "LEFFE",
-    "description": "Bière blonde sans alcool 0.0% bouteilles",
-    "ean": "5410228267447",
-    "nutritionalInfo": {
-      "sucres": 1.1
-    }
-  },
-  {
     "brand": "LA CHOUFFE",
     "description": "Bière blonde belge sans alcool pack bouteilles",
     "ean": "5410769802138",
     "nutritionalInfo": {
       "sucres": 2.3
+    }
+  },
+  {
+    "brand": "ABBAYE DE LEFFE",
+    "description": "Bière Ruby sans alcool 0.0% aromatisée fruits rouge bouteilles",
+    "ean": "5410228281955",
+    "nutritionalInfo": {
+      "sucres": 5
     }
   },
   {
@@ -509,14 +525,6 @@
     "ean": "3261570009436",
     "nutritionalInfo": {
       "sucres": null
-    }
-  },
-  {
-    "brand": "LEFFE",
-    "description": "Bière Ruby sans alcool 0.0% aromatisée fruits rouge bouteilles",
-    "ean": "5410228281955",
-    "nutritionalInfo": {
-      "sucres": 5
     }
   },
   {
