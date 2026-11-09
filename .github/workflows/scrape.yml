@@ -12,13 +12,16 @@ permissions:
 
 jobs:
   scrape:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     outputs:
       changed: ${{ steps.changes.outputs.changed }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ssh-key: ${{ secrets.SEMPIXEL_SSH_KEY }}
+          ref: master
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -53,7 +56,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add src/_data/beers.json src/_data/meta.json
           git commit -m "data: update beers.json"
-          git push
+          git push origin master
 
   build:
     needs: scrape
