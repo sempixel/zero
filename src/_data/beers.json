@@ -40,6 +40,14 @@
     }
   },
   {
+    "brand": "TETE HAUTE",
+    "description": "Cool Down Bière IPA 0%",
+    "ean": "3770012285630",
+    "nutritionalInfo": {
+      "sucres": 2.03
+    }
+  },
+  {
     "brand": "CELTA",
     "description": "Bière blonde 0.4%",
     "ean": "3261570004332",
@@ -176,14 +184,6 @@
     }
   },
   {
-    "brand": "TOURTEL",
-    "description": "Bière Twist sans alcool au jus de citron bouteilles",
-    "ean": "3080216055275",
-    "nutritionalInfo": {
-      "sucres": 4.7
-    }
-  },
-  {
     "brand": "TOURTEL TWIST",
     "description": "Boisson aromatisée à base de bière et au jus de mangue passion 0%",
     "ean": "3080216052403",
@@ -283,14 +283,6 @@
     "brand": "TOURTEL TWIST",
     "description": "Boisson aromatisée 0.0% à base de bière sans alcool et au jus de framboise",
     "ean": "3080216055367",
-    "nutritionalInfo": {
-      "sucres": 4.9
-    }
-  },
-  {
-    "brand": "TOURTEL TWIST",
-    "description": "Boisson aromatisé à base de bière et au jus de fraise et notes de rhubarbe 0.0%",
-    "ean": "3080216056296",
     "nutritionalInfo": {
       "sucres": 4.9
     }
@@ -611,6 +603,14 @@
     "brand": "STERLING",
     "description": "Boisson aromatisée à base de bière sans alcool saveur pêche",
     "ean": "3596710543458",
+    "nutritionalInfo": {
+      "sucres": null
+    }
+  },
+  {
+    "brand": "TRIPEL KARMELIET",
+    "description": "0,0 bière triple belge sans alcool bouteille",
+    "ean": "5410228339519",
     "nutritionalInfo": {
       "sucres": null
     }
