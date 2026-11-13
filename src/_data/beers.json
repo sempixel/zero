@@ -440,19 +440,19 @@
     }
   },
   {
-    "brand": "ABBAYE DE LEFFE",
-    "description": "Bière blonde sans alcool 0.0% bouteilles",
-    "ean": "5410228267447",
-    "nutritionalInfo": {
-      "sucres": 1.1
-    }
-  },
-  {
     "brand": "LA PARISIENNE",
     "description": "Bière blonde sans alcool 0,0% bio bouteille",
     "ean": "3760039241283",
     "nutritionalInfo": {
       "sucres": 6
+    }
+  },
+  {
+    "brand": "ABBAYE DE LEFFE",
+    "description": "Bière blonde sans alcool 0.0% bouteilles",
+    "ean": "5410228267447",
+    "nutritionalInfo": {
+      "sucres": 1.1
     }
   },
   {
@@ -577,14 +577,6 @@
   },
   {
     "brand": "STERLING",
-    "description": "Bière aromatisée citron 0% bouteilles",
-    "ean": "3596710533794",
-    "nutritionalInfo": {
-      "sucres": null
-    }
-  },
-  {
-    "brand": "STERLING",
     "description": "Bière blonde sans alcool 0% bouteilles",
     "ean": "3596710512409",
     "nutritionalInfo": {
@@ -595,6 +587,14 @@
     "brand": "STERLING",
     "description": "Bière aromatisée framboise 0% bouteilles",
     "ean": "3596710533787",
+    "nutritionalInfo": {
+      "sucres": null
+    }
+  },
+  {
+    "brand": "STERLING",
+    "description": "Bière aromatisée citron 0% bouteilles",
+    "ean": "3596710533794",
     "nutritionalInfo": {
       "sucres": null
     }
