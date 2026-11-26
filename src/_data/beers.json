@@ -305,14 +305,6 @@
   },
   {
     "brand": "TOURTEL TWIST",
-    "description": "Boisson aromatisé à base de bière et au jus de fraise et notes de rhubarbe 0.0%",
-    "ean": "3080216056296",
-    "nutritionalInfo": {
-      "sucres": 4.9
-    }
-  },
-  {
-    "brand": "TOURTEL TWIST",
     "description": "Bière sans alcool 0.0% aromatisée jus de citron",
     "ean": "3080216060361",
     "nutritionalInfo": {
@@ -448,14 +440,6 @@
     }
   },
   {
-    "brand": "CHOUFFE",
-    "description": "Bière belge blonde sans alcool",
-    "ean": "5410769804255",
-    "nutritionalInfo": {
-      "sucres": 1.2
-    }
-  },
-  {
     "brand": "LA PARISIENNE",
     "description": "Bière blonde sans alcool 0,0% bio bouteille",
     "ean": "3760039241283",
@@ -472,19 +456,19 @@
     }
   },
   {
+    "brand": "CHOUFFE",
+    "description": "Bière belge blonde sans alcool",
+    "ean": "5410769804255",
+    "nutritionalInfo": {
+      "sucres": 1.2
+    }
+  },
+  {
     "brand": "ABBAYE DE LEFFE",
     "description": "Bière Ruby sans alcool 0.0% aromatisée fruits rouge bouteilles",
     "ean": "5410228281955",
     "nutritionalInfo": {
       "sucres": 5
-    }
-  },
-  {
-    "brand": "CHOUFFE",
-    "description": "Bière cherry sans alcool",
-    "ean": "5410769804118",
-    "nutritionalInfo": {
-      "sucres": 3.66
     }
   },
   {
@@ -497,16 +481,24 @@
   },
   {
     "brand": "STERLING",
-    "description": "Bière aromatisée citron 0% bouteilles",
-    "ean": "3596710533794",
+    "description": "Bière blonde sans alcool 0% bouteilles",
+    "ean": "3596710512409",
     "nutritionalInfo": {
       "sucres": null
     }
   },
   {
+    "brand": "CHOUFFE",
+    "description": "Bière cherry sans alcool",
+    "ean": "5410769804118",
+    "nutritionalInfo": {
+      "sucres": 3.66
+    }
+  },
+  {
     "brand": "STERLING",
-    "description": "Bière blonde sans alcool 0% bouteilles",
-    "ean": "3596710512409",
+    "description": "Bière aromatisée citron 0% bouteilles",
+    "ean": "3596710533794",
     "nutritionalInfo": {
       "sucres": null
     }
@@ -552,17 +544,17 @@
     }
   },
   {
-    "brand": "STERLING",
-    "description": "Boisson aromatisée à base de bière sans alcool saveur pêche",
-    "ean": "3596710543458",
+    "brand": "LIEFMANS",
+    "description": "Bière aux fruits 0,0% bouteille",
+    "ean": "5411686701597",
     "nutritionalInfo": {
       "sucres": null
     }
   },
   {
-    "brand": "LIEFMANS",
-    "description": "Bière aux fruits 0,0% bouteille",
-    "ean": "5411686701597",
+    "brand": "STERLING",
+    "description": "Boisson aromatisée à base de bière sans alcool saveur pêche",
+    "ean": "3596710543458",
     "nutritionalInfo": {
       "sucres": null
     }
@@ -589,14 +581,6 @@
     "ean": "5410228339519",
     "nutritionalInfo": {
       "sucres": null
-    }
-  },
-  {
-    "brand": "LIEFMANS",
-    "description": "Bière fruitée arôme pêche 0%",
-    "ean": "5411686702976",
-    "nutritionalInfo": {
-      "sucres": 1.7
     }
   },
   {
